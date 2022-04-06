@@ -1,0 +1,1 @@
+void Init_TPM(int32_t function);
