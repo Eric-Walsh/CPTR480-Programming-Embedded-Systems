@@ -35,16 +35,18 @@ uint32_t distance(){
 	//initialization
 	//SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	TPM0->CNT = 0;
+	//Reset Flags
+	TPM0->STATUS |=  TPM_STATUS_CH0F_MASK | TPM_STATUS_CH1F_MASK;
+	
 	PORTD->PCR[7] &= ~PORT_PCR_MUX_MASK;
 	PORTD->PCR[7] |= PORT_PCR_MUX(1);
 	PTD->PDDR |= MASK(7);
 	
 	PTD->PSOR = MASK(7);
-	control_RGB_LEDs(0, 0, 1);
 	delayMs(100);
 	control_RGB_LEDs(0, 0, 0);
 	PTD->PCOR = MASK(7);
-	int poll;
+	int poll = 1;
 	do {
 		if(TPM0->STATUS & TPM_STATUS_CH0F_MASK){
 			poll = 0;
@@ -53,7 +55,7 @@ uint32_t distance(){
 			poll = 1;
 			control_RGB_LEDs(1, 0, 0);
 		}
-	} while(poll);
+	} while(poll > 0);
 	
 	return TPM0_C0V;
 }

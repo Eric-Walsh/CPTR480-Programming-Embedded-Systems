@@ -6,3 +6,4 @@
 .\objects\lcd_lib_4bit_20b.o: C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h
 .\objects\lcd_lib_4bit_20b.o: C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\lcd_lib_4bit_20b.o: .\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h
+.\objects\lcd_lib_4bit_20b.o: LEDs.h

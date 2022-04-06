@@ -18,6 +18,7 @@
 /*----------------------------------------------------------------------------*/
 #include <stdint.h>
 #include <MKL25Z4.h>
+#include "LEDs.h"
 
 #define LCD_EN              0x00000002    // PTB1 LCD enable 
 #define LCD_RW              0x00000004    // PTB2 LCD read/write
@@ -132,5 +133,7 @@ void delayMs(uint32_t n)
 uint32_t i;
 uint32_t j;
 for(i=0; i < n; i++)
-		for(j=0; j < 8; j++) {} //Counting to 8 in a 8MHz clock to get one microsecond
+		for(j=0; j < 8; j++) {
+		control_RGB_LEDs(0, 0, 1);
+		} //Counting to 8 in a 8MHz clock to get one microsecond
 }

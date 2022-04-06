@@ -10,7 +10,7 @@ void Init_TPM(int32_t function){
 		//Set clock source
 		SIM->SOPT2 |= (SIM_SOPT2_TPMSRC(2) | SIM_SOPT2_TPMSRC_MASK);
 		//Mod value
-		TPM0->MOD = 0xffff;
+		TPM0->MOD = 0xf424;
 		//set channel to capture falling edge input
 		TPM0->CONTROLS[0].CnSC = TPM_CnSC_ELSB_MASK | TPM_CnSC_CHIE_MASK;
 		//Select pin mux to send the input signal on PTD0 to the timer
@@ -29,6 +29,5 @@ void Init_TPM(int32_t function){
 void TPM0_IRQHandler(){
 	
 	
-	//Reset Flags
-	TPM0->STATUS |= TPM_STATUS_CH0F_MASK | TPM_STATUS_CH0F_MASK | TPM_STATUS_CH1F_MASK;
+	
 }
