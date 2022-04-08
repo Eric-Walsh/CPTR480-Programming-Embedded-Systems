@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Eric Walsh CPTR480 Lab 2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Eric Walsh CPTR480 Lab 2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Apr 06 10:26:12 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Apr 08 10:35:34 2022
 <BR><P>
 <H3>Maximum Stack Usage =         48 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -382,7 +382,7 @@ Global Symbols
 
 <P><STRONG><a name="[77]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[42]"></a>Init_TPM</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, tpm_functions.o(i.Init_TPM))
+<P><STRONG><a name="[42]"></a>Init_TPM</STRONG> (Thumb, 216 bytes, Stack size 8 bytes, tpm_functions.o(i.Init_TPM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Init_TPM &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
@@ -397,15 +397,13 @@ Global Symbols
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
 </UL>
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
 </UL>
 
-<P><STRONG><a name="[47]"></a>LCD_init</STRONG> (Thumb, 226 bytes, Stack size 8 bytes, lcd_lib_4bit_20b.o(i.LCD_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_init &rArr; LCD_command &rArr; pulse_the_LCD_enable &rArr; delayMs &rArr; control_RGB_LEDs
+<P><STRONG><a name="[47]"></a>LCD_send_data</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcd_lib_4bit_20b.o(i.LCD_send_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_send_data &rArr; pulse_the_LCD_enable &rArr; delayMs &rArr; control_RGB_LEDs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulse_the_LCD_enable
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_command
 </UL>
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -413,9 +411,23 @@ Global Symbols
 <P><STRONG><a name="[2b]"></a>SystemInit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, system_mkl25z4.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(.text)
 </UL>
-<P><STRONG><a name="[1c]"></a>TPM0_IRQHandler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, tpm_functions.o(i.TPM0_IRQHandler))
+<P><STRONG><a name="[1c]"></a>TPM0_IRQHandler</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, tpm_functions.o(i.TPM0_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TPM0_IRQHandler &rArr; control_RGB_LEDs
+</UL>
+<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control_RGB_LEDs
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
+<P><STRONG><a name="[48]"></a>control_RGB_LEDs</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, leds.o(i.control_RGB_LEDs))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = control_RGB_LEDs
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM0_IRQHandler
+<LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;distance
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_RGB_LEDs
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
+</UL>
+
 <P><STRONG><a name="[46]"></a>delayMs</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, lcd_lib_4bit_20b.o(i.delayMs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = delayMs &rArr; control_RGB_LEDs
 </UL>
@@ -424,25 +436,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;distance
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulse_the_LCD_enable
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_command
 </UL>
 
-<P><STRONG><a name="[49]"></a>LCD_send_data</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, lcd_lib_4bit_20b.o(i.LCD_send_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_send_data &rArr; pulse_the_LCD_enable &rArr; delayMs &rArr; control_RGB_LEDs
+<P><STRONG><a name="[49]"></a>LCD_init</STRONG> (Thumb, 226 bytes, Stack size 8 bytes, lcd_lib_4bit_20b.o(i.LCD_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_init &rArr; LCD_command &rArr; pulse_the_LCD_enable &rArr; delayMs &rArr; control_RGB_LEDs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pulse_the_LCD_enable
-</UL>
-<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[48]"></a>control_RGB_LEDs</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, leds.o(i.control_RGB_LEDs))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = control_RGB_LEDs
-</UL>
-<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;distance
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_RGB_LEDs
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_command
+</UL>
+<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[4a]"></a>distance</STRONG> (Thumb, 142 bytes, Stack size 8 bytes, main.o(i.distance))
@@ -466,7 +471,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[39]"></a>main</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[39]"></a>main</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = main &rArr; LCD_init &rArr; LCD_command &rArr; pulse_the_LCD_enable &rArr; delayMs &rArr; control_RGB_LEDs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_debug_signals
@@ -475,9 +480,9 @@ Global Symbols
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_RGB_LEDs
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control_RGB_LEDs
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_command
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_send_data
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_send_data
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -487,9 +492,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delayMs
 </UL>
-<BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_init
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_command
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_send_data
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_send_data
 </UL>
 <P>
 <H3>

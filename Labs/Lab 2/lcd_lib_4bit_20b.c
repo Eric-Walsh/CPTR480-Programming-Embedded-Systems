@@ -133,7 +133,7 @@ void delayMs(uint32_t n)
 uint32_t i;
 uint32_t j;
 for(i=0; i < n; i++)
-		for(j=0; j < 8; j++) {
+		for(j=0; j < 11; j++) {
 		control_RGB_LEDs(0, 0, 1);
-		} //Counting to 8 in a 8MHz clock to get one microsecond
+		} //Counting to 11 in a 10.5MHz clock to get one microsecond
 }

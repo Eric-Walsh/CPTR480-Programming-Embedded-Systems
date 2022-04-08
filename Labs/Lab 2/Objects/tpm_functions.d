@@ -6,3 +6,4 @@
 .\objects\tpm_functions.o: C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h
 .\objects\tpm_functions.o: C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\tpm_functions.o: .\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h
+.\objects\tpm_functions.o: LEDs.h

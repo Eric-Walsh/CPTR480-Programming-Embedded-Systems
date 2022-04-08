@@ -66,7 +66,8 @@ int main(){
 	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTE_MASK;
 	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
 	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
-	Init_TPM(0);
+	int func = 1;
+	Init_TPM(func);
 	LCD_init();
 	LCD_command(0x01);
 	init_RGB_LEDs();
@@ -75,9 +76,18 @@ int main(){
 	uint32_t dist;
 	control_RGB_LEDs(0,1,0);
 	while (1) {
-		dist = distance();
-		LCD_send_data(dist);
-		delayMs(1000000);
+		if(func ==0){
+			dist = distance();
+			LCD_send_data(dist);
+			delayMs(1000000);
+		} else {
+			for(int i = 0; i < 48000; i++){
+				TPM0->CONTROLS[5].CnV = i;
+				delayMs(100);
+			}
+		}
+		
+		
 	}
 	
 }
