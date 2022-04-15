@@ -1,18 +1,14 @@
 /* ***************************************************************************************************************
 // Filename: main.c 																							   //
 // Author: E.Walsh 																								   //
-// Version: 3/29/22 written 																					   //
+// Version: 4/13/22 written 																					   //
 // Processor: NXP MKL25Z4 																						   //
 // Compiler: Keil uVision5 																						   //
 // Library: CMSIS core and device startup 																		   //
-// also needs Pit_Functions.c, debug_signals.c, LEDs.c, Main_Functions.c, switches.s, gpio_defs.h, LCD_Functions.c //
+// also needs UART_Functions.h																					   //
 // Hardware: MKL25Z128VLH4 Microcontroller connected to 4 switches,a DAC, ADC, 2 LEDS, and a 2x8 LCD  			   //
-// Expected Outcome: The purpose of this software is to have the user start the PIT timer by pressing switch 1 and //
-// stop the timer by pressing it again. The elapsed time would be displayed on the LCD screen. If the elapsed time //
-// is greater than 1000 ms, then the LED on the kl25 lights red and stays red until the reset button (switch 2) is //
-// pressed.																										   //
-// Actual outcome: The switches screen functions as intended. The elapsed time is inaccurate due to incertainty to //
-// the frequency of the clock.																					   //
+// Expected Outcome: The UART2 channel would output the data put into the UART2_Transmit function.				   //																									   //
+// Actual outcome: The UART2 channel succesfully sends data.													   //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "UART_Functions.h"
