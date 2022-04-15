@@ -1,18 +1,16 @@
 /* ***************************************************************************************************************
-// Filename: main.c 																							   //
-// Author: E.Walsh 																								   //
-// Version: 4/5/22 written 																					   //
-// Processor: NXP MKL25Z4 																						   //
-// Compiler: Keil uVision5 																						   //
-// Library: CMSIS core and device startup 																		   //
-// also needs LCD_Functions.h, Main_Functions, TPM_Functions //
-// Hardware: MKL25Z128VLH4 Microcontroller connected to 4 switches,a DAC, ADC, 2 LEDS, and a 2x8 LCD  			   //
-// Expected Outcome: The purpose of this software is to have the user start the PIT timer by pressing switch 1 and //
-// stop the timer by pressing it again. The elapsed time would be displayed on the LCD screen. If the elapsed time //
-// is greater than 1000 ms, then the LED on the kl25 lights red and stays red until the reset button (switch 2) is //
-// pressed.																										   //
-// Actual outcome: The switches screen functions as intended. The elapsed time is inaccurate due to incertainty to //
-// the frequency of the clock.																					   //
+// Filename: main.c 																							  	   //
+// Author: E.Walsh 																								  	   //
+// Version: 4/5/22 written 																				    	   	   //
+// Processor: NXP MKL25Z4 																						   	   //
+// Compiler: Keil uVision5 																							   //
+// Library: CMSIS core and device startup 															    			   //
+// also needs debug_signals.c, LEDs.c, Main_Functions.c, switches.s, gpio_defs.h, LCD_Functions.c, and TPM_Functions.c //
+// Hardware: MKL25Z128VLH4 Microcontroller connected to 4 switches,a DAC, ADC, 2 LEDS, and a 2x8 LCD  				   //
+// Expected Outcome: have a signal sent out to to a ccounter connected to PTD0. The counter returns a signal to PTD7   //
+// The time between the signal being sent out and the signal recieved would then be displayed on the LCD.			   //
+// Actual outcome: The signal on PTD0 is sucessfully sent out and the signal is recieved to PTD7, but the status flag  //
+// is not set, so nothing gets displayed to the LCD and the system is perpetually waiting for the flag				   //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "LCD_Functions.h"

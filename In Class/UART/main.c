@@ -17,20 +17,21 @@
 #include "MKL25z4.h"
 #include "UART_Functions.h"
 
-
+void delayMs(uint32_t n)
+{
+uint32_t i;
+uint32_t j;
+for(i=0; i < n; i++)
+		for(j=0; j < 3500; j++) {}
+}
 
 int main(){
 	init_UART2();
-	int i = 0;
 	while (1) {
-		if(i % 5 ==0){
-			UART2_Transmit(0x35);
-			
-		}
-		if (i > 1000){
-			i = 0;
-		}
-		i++;
+		UART2_Transmit(0x35);
+		while(!(UART2_S1 & 0x80)){}
+		delayMs(2);
 	}
+		
 	
 }

@@ -30,7 +30,5 @@ void init_UART2(){
 }
 
 void UART2_Transmit(uint32_t data){
-	UART2_D = data >> 16;
-	UART2_D = data >> 8;
 	UART2_D = data;
 }
