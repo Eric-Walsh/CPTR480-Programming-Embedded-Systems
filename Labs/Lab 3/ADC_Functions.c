@@ -26,23 +26,23 @@ void Init_ADC(void){
     //ADC0->CFG1 = ADC_CFG1_ADLPC_MASK | ADC_CFG1_ADLSMP_MASK | ADC_CFG1_MODE(3) | ADC_CFG1_ADICLK(0);
 
     //voltage references 
-    ADC0->SC2 = ADC_SC2_REFSEL(0);
+    //ADC0->SC2 = ADC_SC2_REFSEL(0);
 	
 		
 	
 		//Configure the SIM SOPT7 register
 		SIM->SOPT7 |= SIM_SOPT7_ADC0ALTTRGEN(1); //Alternate trigger selected
     SIM->SOPT7 |= SIM_SOPT7_ADC0PRETRGSEL(0); //Pre-trigger A
-		SIM->SOPT7 |= SIM_SOPT7_ADC0PRETRGSEL(1); //Pre-trigger B
+		//SIM->SOPT7 |= SIM_SOPT7_ADC0PRETRGSEL(1); //Pre-trigger B
     SIM->SOPT7 |= SIM_SOPT7_ADC0TRGSEL(9); //TPM1 overflow trigger
 		
 		//configure the ADC SC1A register 
-		ADC0_SC1A |= ADC_SC1_AIEN(0); //conversion complete inturrupt enabled
+		ADC0_SC1A |= ADC_SC1_AIEN(0); //conversion complete inturrupt disabled
 		ADC0_SC1A |= ADC_SC1_DIFF(0); // single-ended conversions and input channels
 		ADC0_SC1A &= ~ADC_SC1_ADCH_MASK; //set input to 0
 		
 		//configure the ADC SC1B register 
-		ADC0_SC1B |= ADC_SC1_AIEN(0); //conversion complete inturrupt enabled
+		ADC0_SC1B |= ADC_SC1_AIEN(0); //conversion complete inturrupt disabled
 		ADC0_SC1B |= ADC_SC1_DIFF(0); // single-ended conversions and input channels
 		ADC0_SC1B &= ~ADC_SC1_ADCH_MASK; //set input to 0
 		
@@ -78,12 +78,12 @@ void scan_ADC(uint32_t *array){
 	
 		while(channel <= SE7b){
 			ADC0_CFG2 |= ADC_CFG2_MUXSEL(mux);
-			ADC0->SC1[mux] = channel;
-			while(!(ADC0->SC1[mux] & ADC_SC1_COCO_MASK)){}
-			array[i] = ADC0->R[mux];
-				//DEBUG[14] = array[i];
-				//Print_String(DEBUG);
-				//Print_Newline();
+			ADC0->SC1[0] = channel;
+			while(!(ADC0->SC1[0] & ADC_SC1_COCO_MASK)){}
+			array[i] = ADC0->R[0];
+				Print_String(DEBUG);
+				print_base10(array[i], 4);
+				Print_Newline();
 			switch (channel){
 				case SE0:
 					channel = SE5b;

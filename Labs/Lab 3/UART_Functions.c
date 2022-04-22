@@ -58,3 +58,24 @@ void Print_Newline(void){
 	UART2_Transmit(0x0a);
 	delayMs(2);
 }
+
+//***************************************************************************
+//   print_base10                                         L.Aamodt
+//      Print an unsigned integer value, base 10, using UART2
+//      Two parameters are used.
+//        first parameter is the value to be displayed
+//        second parameter is the number of digits to display
+//***************************************************************************
+void print_base10(uint32_t data, uint32_t numdig)
+{
+	  int32_t i;
+		uint32_t array[10];
+		for (i=numdig; i>0; i--) {
+		    array[i-1] = data%10;
+			  data = data/10;
+	  }
+		for (i=0; i<numdig; i++){
+		    UART2->D = array[i]+48;
+				while(!(UART2_S1 & 0x80)) { }			
+		}
+}

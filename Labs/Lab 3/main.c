@@ -24,9 +24,10 @@ int main(){
 	PTD->PTOR = MASK(0);
 	init_UART2();
 	Init_ADC();
-	char data[] = "Testing UART2";
+	char data[] = "Testing UART2 ";
 	uint32_t ADC_data[4] = {1,1,1,1};
 	Print_String(data);
+	print_base10(2020, 4);
 	Print_Newline();
 	while (1) {
 		scan_ADC(ADC_data);
