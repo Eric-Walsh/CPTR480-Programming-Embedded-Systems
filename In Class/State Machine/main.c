@@ -50,18 +50,69 @@ int main(){
 	countToClock(0);
 	while (1) {
 		int flag = 0;
+		uint32_t count = get_Count();
 		switch (present_state){
-			case stateA:
+			case stateA: //Waiting for sw1 to be pressed
 				if(SW1_NOT_PRESSED){
 					flag = 0;
+					control_RGB_LEDs(0,0,0);
 				} else if (SW1_PRESSED){
 					flag = 1;
 				}
 				break;
-			case stateB:
-				clear
-					
-		
+			case stateB: //starting the timer
+				clear_Count();
+				control_RGB_LEDs(1,0,0);
+				Start_PIT();
+				break;
+			case stateC: //debounce buffer
+				if(count < 10){
+					flag = 0;
+				} else if (count >= 10){
+					flag = 1;
+				}
+				break;
+			case stateD: //error checking
+				if(SW1_PRESSED && (count < 1000)){
+					flag = 0;
+				} else if(count > 1000){
+					flag = 1;
+				} else if(SW1_NOT_PRESSED && (count < 1001)){
+					flag = 2;
+				}
+				break;
+			case stateE: //Error state
+				Stop_PIT();
+				display_Error();
+				break;
+			case stateF: //error checking
+				if(SW1_NOT_PRESSED){
+					flag = 0;
+				} else if(count > 1000){
+					flag = 1;
+				} else if(SW1_PRESSED){
+					flag = 2;
+				}
+				break;
+			case stateG: //sucess state
+				Stop_PIT();
+				display_Count();
+				break;
+			case stateH: //waiting for restart state
+				if(SW2_NOT_PRESSED){
+					flag = 0;
+				} else if (SW2_PRESSED){
+					flag = 1;
+				}
+				break;
+			case stateI: //restart and clear screen
+				display_Ready();
+				break;
+			default:
+				flag = 0;
+				break;
+		}
+		state_Update(flag);
 	}
 	
 }

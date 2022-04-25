@@ -52,7 +52,7 @@ void PIT_IRQHandler(void) {
 	if (PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK){
 			//Clear status flags for timer channel 0
 		PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
-		inc_Count;
+		inc_Count();
 		
 	} 
 	return;

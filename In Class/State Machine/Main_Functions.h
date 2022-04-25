@@ -26,3 +26,5 @@ void clear_Count(void);
 
 void inc_Count(void);
 
+uint32_t get_Count(void);
+
