@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>State Machine</OutputName>
+          <OutputName>Lab 4</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -258,17 +258,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -278,7 +278,7 @@
                 <Size>0x20000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -383,26 +383,6 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>gpio_defs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\gpio_defs.h</FilePath>
-            </File>
-            <File>
-              <FileName>LCD_Functions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\LCD_Functions.c</FilePath>
-            </File>
-            <File>
-              <FileName>LCD_Functions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\LCD_Functions.h</FilePath>
-            </File>
-            <File>
-              <FileName>lcd_lib_4bit_20b.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lcd_lib_4bit_20b.c</FilePath>
-            </File>
-            <File>
               <FileName>LEDs.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\LEDs.c</FilePath>
@@ -418,6 +398,36 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
+              <FileName>TPM_Functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TPM_Functions.c</FilePath>
+            </File>
+            <File>
+              <FileName>TPM_Functions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\TPM_Functions.h</FilePath>
+            </File>
+            <File>
+              <FileName>USound_Functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USound_Functions.c</FilePath>
+            </File>
+            <File>
+              <FileName>USound_Functions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USound_Functions.h</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_Functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LCD_Functions.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_Functions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCD_Functions.h</FilePath>
+            </File>
+            <File>
               <FileName>Main_Functions.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Main_Functions.c</FilePath>
@@ -428,24 +438,14 @@
               <FilePath>.\Main_Functions.h</FilePath>
             </File>
             <File>
-              <FileName>Pit_Functions.c</FileName>
+              <FileName>lcd_lib_4bit_20b.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Pit_Functions.c</FilePath>
+              <FilePath>.\lcd_lib_4bit_20b.c</FilePath>
             </File>
             <File>
-              <FileName>PIT_Functions.h</FileName>
+              <FileName>gpio_defs.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\PIT_Functions.h</FilePath>
-            </File>
-            <File>
-              <FileName>switches.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\switches.c</FilePath>
-            </File>
-            <File>
-              <FileName>switches.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\switches.h</FilePath>
+              <FilePath>.\gpio_defs.h</FilePath>
             </File>
           </Files>
         </Group>
