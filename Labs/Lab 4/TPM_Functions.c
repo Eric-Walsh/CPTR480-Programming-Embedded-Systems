@@ -59,7 +59,7 @@ void init_dist_TPM0(){
 	TPM0->CONF |= TPM_CONF_DBGMODE(3);
 	
 	//set prescaler value
-	TPM0->SC |= TPM_SC_PS(5);
+	TPM0->SC |= TPM_SC_PS(4);
 	
 	//clear count register
 	TPM0->CNT = 0x0000;
