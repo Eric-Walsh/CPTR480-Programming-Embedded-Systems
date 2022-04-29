@@ -32,7 +32,7 @@ void init_ultrasound(){
 }
 
 uint32_t measure_distance(){
-	uint32_t rawDist = 0;
+	uint32_t rawDist = 1;
 	uint32_t mmDist = 0;
 	
 	//Turn on port D bit 7
@@ -41,7 +41,7 @@ uint32_t measure_distance(){
 	//clear count register
 	TPM0->CNT = 0x0000;
 	//TPM0->STATUS &= TPM_STATUS_CH0F_MASK;
-	
+	TPM0->CONTROLS[0].CnSC |= 0x80;
 	//turn on counter
 	TPM0->SC |= TPM_SC_CMOD(1);
 	
@@ -52,8 +52,10 @@ uint32_t measure_distance(){
 	//clear ptd7
 	PTD->PCOR = MASK(7);
 	
+	delayMicros(20);
+	
 	//poll chf flag of tpm0
-	//while(!(TPM0_C0SC & TPM_CnSC_CHF_MASK));
+ 	//while(!(TPM0_C0SC & TPM_CnSC_CHF_MASK));
 	
 	//turn off counter
 	TPM0->SC |= TPM_SC_CMOD(0);

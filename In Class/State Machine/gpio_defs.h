@@ -17,6 +17,6 @@
 #define SW2_PRESSED (~(PTA->PDIR) & MASK(sw2))
 
 enum state_type{stateA,stateB,stateC,stateD,stateE,stateF,stateG,stateH,stateI};
-enum state_type present_state,next_state;
+
 #endif
-// *******************************ARM University Program Copyright © ARM Ltd 2013*************************************   
+// *******************************ARM University Program Copyright ï¿½ ARM Ltd 2013*************************************   

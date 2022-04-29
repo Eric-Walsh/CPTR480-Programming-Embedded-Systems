@@ -11,8 +11,8 @@
 // stop the timer by pressing it again. The elapsed time would be displayed on the LCD screen. If the elapsed time //
 // is greater than 1000 ms, then the LED on the kl25 lights red and stays red until the reset button (switch 2) is //
 // pressed.																										   //
-// Actual outcome: The switches screen functions as intended. The elapsed time is inaccurate due to incertainty to //
-// the frequency of the clock.																					   //
+// Actual outcome: The switches screen functions as intended.  //
+// 																					   //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "PIT_Functions.h"
@@ -24,6 +24,7 @@
 
 extern volatile unsigned switch_pressed;
 extern void init_debug_signals(void);
+extern enum state_type present_state,next_state;
 
 
 void LCD_init(void);
@@ -42,12 +43,14 @@ int main(){
 	LCD_command(clear_screen);
 	init_RGB_LEDs();
 	init_switch();
-	init_debug_signals();
+	//init_debug_signals();
 	Init_PIT(10500);
 	__enable_irq();
 	present_state = stateA;
 	control_RGB_LEDs(0,1,0);
 	countToClock(0);
+	LCD_command(clear_screen);
+	//LCD_command(cursor_line1);
 	while (1) {
 		int flag = 0;
 		uint32_t count = get_Count();

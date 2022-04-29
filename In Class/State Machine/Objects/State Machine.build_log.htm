@@ -17,21 +17,16 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.29.0.0
 Dialog DLL:      DARMCM1.DLL V1.19.2.0
-Target DLL:      UL2CM3.DLL V1.163.0.0
+Target DLL:      CMSIS_AGDI.dll V1.32.0.0
 Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 C:\Users\eric.walsh\OneDrive - Walla Walla University\Computer Science\Programming Embedded Systems\CPTR480-Programming-Embedded-Systems\In Class\State Machine\State Machine.uvprojx
-Project File Date:  04/25/2022
+Project File Date:  04/28/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling LCD_Functions.c...
-compiling lcd_lib_4bit_20b.c...
-compiling LEDs.c...
-compiling Pit_Functions.c...
-compiling main.c...
 compiling Main_Functions.c...
 Main_Functions.c(33): warning:  #111-D: statement is unreachable
   			break;
@@ -66,20 +61,9 @@ Main_Functions.c(75): warning:  #111-D: statement is unreachable
 Main_Functions.c(78): warning:  #111-D: statement is unreachable
   			break;
 Main_Functions.c: 16 warnings, 0 errors
-assembling startup_MKL25Z4.s...
-compiling switches.c...
-compiling system_MKL25Z4.c...
 linking...
-.\Objects\State Machine.axf: Error: L6200E: Symbol present_state multiply defined (by main.o and leds.o).
-.\Objects\State Machine.axf: Error: L6200E: Symbol present_state multiply defined (by main_functions.o and leds.o).
-.\Objects\State Machine.axf: Error: L6200E: Symbol present_state multiply defined (by switches.o and leds.o).
-.\Objects\State Machine.axf: Error: L6200E: Symbol next_state multiply defined (by main.o and leds.o).
-.\Objects\State Machine.axf: Error: L6200E: Symbol next_state multiply defined (by main_functions.o and leds.o).
-.\Objects\State Machine.axf: Error: L6200E: Symbol next_state multiply defined (by switches.o and leds.o).
-Not enough information to list image symbols.
-Not enough information to list load addresses in the image map.
-Finished: 2 information, 0 warning and 6 error messages.
-".\Objects\State Machine.axf" - 6 Error(s), 16 Warning(s).
+Program Size: Code=4952 RO-data=276 RW-data=24 ZI-data=392  
+".\Objects\State Machine.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -106,11 +90,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: Keil::Device:Startup:2.5.0
+      Source file:   Device\Source\system_MKL25Z4.c
       Include file:  Device\Source\system_MKL25Z4.h
       Source file:   Device\Source\ARM\startup_MKL25Z4.s
-      Source file:   Device\Source\system_MKL25Z4.c
-Target not created.
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

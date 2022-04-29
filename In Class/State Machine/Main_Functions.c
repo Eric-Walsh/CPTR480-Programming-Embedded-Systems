@@ -8,9 +8,9 @@
 
 	uint32_t minutes = 0;
 	uint32_t seconds = 0;
-	uint32_t tenthsec = 0;;
+	uint32_t tenthsec = 0;
 	uint32_t clock[] = {0,0,0,0,0,0,0,0,0};
-	
+	enum state_type present_state,next_state;
 	
 	
 unsigned int counter; //increments everytime the PIT IRQ ia called
@@ -147,33 +147,23 @@ void display_Count(void){
 }
 
 void display_Error(void){
-	int32_t i;
-		LCD_command(cursor_line1);
-		uint32_t array[10];
-		array[0] = 'E';
-		array[1] = 'R';
-		array[2] = 'R';
-		array[3] = 'O';
-		array[4] = 'R';
-		array[5] = ':';
+	//int32_t i;
+	LCD_command(clear_screen);
+		//LCD_command(cursor_line1);
+	uint32_t error[8] = {'E','R','R','O','R', ':',' ',' '};
+		//uint32_t array[5];
+		displayString(error,8);
 		LCD_command(cursor_line2);
-		for (i=9; i>5; i--) {
-		    array[i-1] = counter%10;
-			  counter = counter/10;
-	    }
-		displayString(array, 10);
-		control_RGB_LEDs(0,1,0);
-		LCD_command(cursor_line1);
+		countToTime();
+		decToClock();
+		displayString(clock, 8);
+	//	LCD_command(cursor_line1);
 	}
 
 	void display_Ready(void){
 		LCD_command(clear_screen);
+		//LCD_command(cursor_line1);
 		uint32_t array[] = {'R', 'E', 'A', 'D', 'Y'};
-		/*array[0] = 'R';
-		array[1] = 'E';
-		array[2] = 'A';
-		array[3] = 'D';
-		array[4] = 'Y';*/
 		displayString(array, 5);
 		control_RGB_LEDs(1,1,1);
 	}

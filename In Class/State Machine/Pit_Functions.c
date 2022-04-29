@@ -7,7 +7,7 @@ volatile unsigned LCD_update_requested = 0;
 volatile unsigned int count;
 
 void Init_PIT(unsigned period) {
-		//ENable clock to PIT module
+		//Enable clock to PIT module
 	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK;
 	
 		//Enable module, freeze timers in debug mode

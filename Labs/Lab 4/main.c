@@ -44,10 +44,11 @@ int main(){
 	while (1) {
 		distance = measure_distance();
 		for (int i=4; i>0; i--) {
-		    array[i-1] = distance%10;
+		    array[i-1] = distance%10 + 48;
 			  distance = distance/10;
 	    }
-		displayString(array, 10);
+		displayString(array, 5);
+		LCD_command(clear_screen);
 	}
 	
 }
