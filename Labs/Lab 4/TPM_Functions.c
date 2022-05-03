@@ -42,18 +42,24 @@ void init_dist_TPM0(){
 	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	SIM->SCGC6 |= SIM_SCGC6_TPM0_MASK;
 	
-	//configure Port D0 to connect to TPM0
+	//configure Ports D0 & D1 to connect to TPM0
 	PORTD->PCR[0] &= ~PORT_PCR_MUX_MASK;
 	PORTD->PCR[0] |= PORT_PCR_MUX(4);
 	
+	PORTD->PCR[1] &= ~PORT_PCR_MUX_MASK;
+	PORTD->PCR[1] |= PORT_PCR_MUX(4);
+	
 	//set clock source for TPM
-	SIM->SOPT2 |= (SIM_SOPT2_TPMSRC(2) | SIM_SOPT2_PLLFLLSEL_MASK);
+	SIM->SOPT2 |= (SIM_SOPT2_TPMSRC(1) | SIM_SOPT2_PLLFLLSEL_MASK);
 	
 	//timer is turned off
 	TPM0->SC = 0;
 	
-	//set TPM0 channel 0 for falling edge input capture
-	TPM0->CONTROLS[0].CnSC |= TPM_CnSC_ELSB_MASK;
+	//set TPM0 channel 0 for rising edge input capture
+	TPM0->CONTROLS[0].CnSC |= TPM_CnSC_ELSA_MASK;
+	
+	//set TPM0 channel 1 for falling edge input capture
+	TPM0->CONTROLS[1].CnSC |= TPM_CnSC_ELSB_MASK;
 	
 	//allow clock to run in debug
 	TPM0->CONF |= TPM_CONF_DBGMODE(3);

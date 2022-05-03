@@ -10,7 +10,8 @@
 // Expected Outcome: have a signal sent out to to a ccounter connected to PTD0. The counter returns a signal to PTD7   //
 // The time between the signal being sent out and the signal recieved would then be displayed on the LCD.			   //
 // Actual outcome: The signal on PTD0 is sucessfully sent out and the signal is recieved to PTD7, but the status flag  //
-// is not set, so nothing gets displayed to the LCD and the system is perpetually waiting for the flag				   //
+// is not set, so nothing gets displayed to the LCD and the system is perpetually waiting for the flag.	//
+// If the system doesnt poll for the status flags, then it will measure distance, although not accurately. //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "LCD_Functions.h"
@@ -42,13 +43,15 @@ int main(){
 	uint32_t array[5];
 	uint32_t distance;
 	while (1) {
+		
 		distance = measure_distance();
 		for (int i=4; i>0; i--) {
 		    array[i-1] = distance%10 + 48;
 			  distance = distance/10;
 	    }
-		displayString(array, 5);
+		
 		LCD_command(clear_screen);
+		displayString(array, 5);
 	}
 	
 }
