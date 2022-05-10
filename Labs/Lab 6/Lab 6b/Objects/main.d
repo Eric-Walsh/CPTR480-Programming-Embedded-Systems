@@ -11,3 +11,7 @@
 .\objects\main.o: SPI_Functions.h
 .\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
 .\objects\main.o: LEDs.h
+.\objects\main.o: Mag_Functions.h
+.\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
+.\objects\main.o: UART_Functions.h
+.\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h

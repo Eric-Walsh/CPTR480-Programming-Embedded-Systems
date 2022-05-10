@@ -10,8 +10,9 @@ int main(){
 	init_SPI1();
 	init_UART2();
 	uint32_t data[3];
+	uint32_t line[] = {'X', '=', ' '};
 	while(1){
-		delayMs(5000);
+		delayMs(50);
 		data[0] = get_XData();
 		delayMs(10);
 		data[1] = get_YData();
@@ -19,11 +20,22 @@ int main(){
 		data[2] = get_ZData();
 		delayMs(10);
 		
-		print_base10(data[0], 3);
+		Print_String(line);
 		delayMs(10);
-		print_base10(data[1], 3);
+		print_base10(data[0], 4);
+		Print_Newline();
+		
+		line[0] = 'Y';
+		Print_String(line);
 		delayMs(10);
-		print_base10(data[2], 3);
+		print_base10(data[1], 4);
+		Print_Newline();
+		
+		line[0] = 'Z';
+		Print_String(line);
+		delayMs(10);
+		print_base10(data[2], 4);
+		Print_Newline();
 		
 		delayMs(5000);
 	}
