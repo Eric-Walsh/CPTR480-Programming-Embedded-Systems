@@ -7,11 +7,10 @@
 // Library: CMSIS core and device startup 															    			   //
 // also needs debug_signals.c, LEDs.c, Main_Functions.c, switches.s, gpio_defs.h, LCD_Functions.c, and TPM_Functions.c //
 // Hardware: MKL25Z128VLH4 Microcontroller connected to 4 switches,a DAC, ADC, 2 LEDS, and a 2x8 LCD  				   //
-// Expected Outcome: have a signal sent out to to a ccounter connected to PTD0. The counter returns a signal to PTD7   //
-// The time between the signal being sent out and the signal recieved would then be displayed on the LCD.			   //
-// Actual outcome: The signal on PTD0 is sucessfully sent out and the signal is recieved to PTD7, but the status flag  //
-// is not set, so nothing gets displayed to the LCD and the system is perpetually waiting for the flag.	//
-// If the system doesnt poll for the status flags, then it will measure distance, although not accurately. //
+// Expected Outcome: An ultasound device that measures distance will be connected to the board, which will use the TPM //
+// to measure the distance from the ultrasound device to whatever is infront of it		        					   //
+// Actual outcome: The distance signals are succesfully recieved from the ultrasound device, but the distance is	   //
+// inaccurate and only works if there isn't polling.																   //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "LCD_Functions.h"

@@ -7,9 +7,8 @@
 // Library: CMSIS core and device startup 																		   //
 // also needs UART_Functions.h																					   //
 // Hardware: MKL25Z128VLH4 Microcontroller connected to 4 switches,a DAC, ADC, 1 RGB LEDS, and a 2x8 LCD  		   //
-// Expected Outcome: The scan_ADC funtion would scan 9 ADC channels and put the values into an array. The values in//
-// the array would then be output to the UART2 transmitter for debugging.	   									   //
-// Actual outcome: The scan function successfully scans the channels, however the UART2 is transmitting errors.    //
+// Expected Outcome: The Uart will use the queue data structure to send out characters.                            //
+// Actual Outcome: The Uart will only send one of the characters that in the queue.								   //
 // ****************************************************************************************************************/
 #include "MKL25z4.h"
 #include "UART_Functions.h"
