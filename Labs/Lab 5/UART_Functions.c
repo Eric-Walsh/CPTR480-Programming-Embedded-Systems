@@ -40,6 +40,7 @@ void init_UART2(){
 	
 	//Enable Transit
 	UART2->C2 |= 0x8;
+	
 	NVIC_SetPriority(UART2_IRQn, 128); // 0, 64, 128 or 192
 	NVIC_ClearPendingIRQ(UART2_IRQn); 
 	NVIC_EnableIRQ(UART2_IRQn);
@@ -68,11 +69,12 @@ void Print_Newline(void){
 }
 
 void Q_UART2_Transmit(uint32_t data[]){
-	for(int i = 0; i < 13; i++){
+	for(int i = 0; i < 14; i++){
 			Q_Enqueue(&q, data[i]);
 		}
 	
 		UART2_Transmit(Q_Dequeue(&q));
+		delayMs(2);
 }
 
 //***************************************************************************
@@ -94,6 +96,7 @@ void print_base10(uint32_t data, uint32_t numdig)
 		    UART2->D = array[i]+48;
 				while(!(UART2_S1 & 0x80)) { }			
 		}
+		delayMs(2);
 }
 
 void UART2_IRQHandler(void){
@@ -101,6 +104,7 @@ void UART2_IRQHandler(void){
 	
 	if(!Q_Empty(&q)){
 		UART2_Transmit(Q_Dequeue(&q));
+		delayMs(2);
 	}
 
 

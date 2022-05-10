@@ -21,21 +21,33 @@ Target DLL:      CMSIS_AGDI.dll V1.32.0.0
 Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
-C:\Users\eric.Walsh\OneDrive - Walla Walla University\Computer Science\Programming Embedded Systems\CPTR480-Programming-Embedded-Systems\Labs\Lab 5\Lab 5.uvprojx
+C:\Users\eric.walsh\OneDrive - Walla Walla University\Computer Science\Programming Embedded Systems\CPTR480-Programming-Embedded-Systems\Labs\Lab 5\Lab 5.uvprojx
 Project File Date:  05/03/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Target 1'
+Rebuild target 'Target 1'
+compiling Queue_Functions.c...
+Queue_Functions.c(69): warning:  #1-D: last line of file ends without a newline
+  }
+Queue_Functions.c: 1 warning, 0 errors
 compiling main.c...
 UART_Functions.h(3): warning:  #1295-D: Deprecated declaration init_UART2 - give arg types
   void init_UART2();
 Queue_Functions.h(15): warning:  #1-D: last line of file ends without a newline
   	
 main.c: 2 warnings, 0 errors
+compiling UART_Functions.c...
+Queue_Functions.h(15): warning:  #1-D: last line of file ends without a newline
+  	
+UART_Functions.c(111): warning:  #1-D: last line of file ends without a newline
+  }
+UART_Functions.c: 2 warnings, 0 errors
+assembling startup_MKL25Z4.s...
+compiling system_MKL25Z4.c...
 linking...
-Program Size: Code=1600 RO-data=260 RW-data=0 ZI-data=624  
-".\Objects\Lab 5.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=2020 RO-data=264 RW-data=0 ZI-data=624  
+".\Objects\Lab 5.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,9 +74,9 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: Keil::Device:Startup:2.5.0
+      Source file:   Device\Source\ARM\startup_MKL25Z4.s
       Source file:   Device\Source\system_MKL25Z4.c
       Include file:  Device\Source\system_MKL25Z4.h
-      Source file:   Device\Source\ARM\startup_MKL25Z4.s
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

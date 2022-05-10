@@ -17,14 +17,17 @@
 #include "gpio_defs.h"
 
 int main(){
-	Q_T que;
-	Q_Init(&que);
+	//Q_T que;
+	//Q_Init(&que);
 	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	init_UART2();
-	uint32_t data[] = {'T','e','s','t','i','n','g',' ','U','A','R','T','2'};
-	//Print_String(data);
-	print_base10(2020, 4);
+	uint32_t data[] = {'T','e','s','t','i','n','g',' ','U','A','R','T','2', ' '};
+	char test[] = "Testing UART2 ";
+	Print_String(test);
+	//while(!(UART2_S1 & 0x80)){};
+	print_base10(2022, 4);
 	Print_Newline();
+	__enable_irq();
 	Q_UART2_Transmit(data);
 	while (1) {
 		

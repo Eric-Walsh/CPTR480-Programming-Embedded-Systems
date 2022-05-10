@@ -110,6 +110,9 @@ extern "C" {
   #define DISABLE_WDOG                 1
 #endif
 
+#ifndef CLOCK_SETUP
+  #define CLOCK_SETUP                 1
+#endif
 
 
 
