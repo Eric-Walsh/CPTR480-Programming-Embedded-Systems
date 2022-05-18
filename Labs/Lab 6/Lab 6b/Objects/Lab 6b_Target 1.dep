@@ -12,7 +12,7 @@ I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x627AE855)
 I (LEDs.h)(0x601B03A5)
 I (gpio_defs.h)(0x6270174D)
 F (.\LEDs.h)(0x601B03A5)()
-F (.\main.c)(0x62843721)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x62843E3C)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h)(0x585C5D0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BB318)
 I (C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2671B6)
@@ -35,7 +35,7 @@ I (C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0
 I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x627AE855)
 I (gpio_defs.h)(0x6270174D)
 F (.\Queue_Functions.h)(0x6270174D)()
-F (.\SPI_Functions.c)(0x62843838)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\spi_functions.o --omf_browse .\objects\spi_functions.crf --depend .\objects\spi_functions.d)
+F (.\SPI_Functions.c)(0x62843DD7)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\spi_functions.o --omf_browse .\objects\spi_functions.crf --depend .\objects\spi_functions.d)
 I (C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h)(0x585C5D0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BB318)
 I (C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2671B6)
@@ -58,7 +58,7 @@ I (.\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x627AE855)
 I (gpio_defs.h)(0x6270174D)
 I (Queue_Functions.h)(0x6270174D)
 F (.\UART_Functions.h)(0x627E9A41)()
-F (.\Mag_Functions.c)(0x62843671)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mag_functions.o --omf_browse .\objects\mag_functions.crf --depend .\objects\mag_functions.d)
+F (.\Mag_Functions.c)(0x62843DD7)(--c99 --gnu -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DMKL25Z128xxx4-o .\objects\mag_functions.o --omf_browse .\objects\mag_functions.crf --depend .\objects\mag_functions.d)
 I (C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h)(0x585C5D0A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BB318)
 I (C:\Users\Public\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D2671B6)

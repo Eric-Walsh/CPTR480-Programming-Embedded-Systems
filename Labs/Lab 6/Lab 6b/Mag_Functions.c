@@ -32,7 +32,7 @@ void init_Mag(void){
 	delayMs(10);
 	PTD->PCOR |= MASK(4);
 	//delayMs(50);
-	SPIsend(0x6080);
+	SPIsend(0x6081);
 	PTD->PSOR |= MASK(4);
 }
 

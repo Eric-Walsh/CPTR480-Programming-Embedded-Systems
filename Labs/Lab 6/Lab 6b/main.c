@@ -35,31 +35,38 @@ int main(){
 			data[2] = get_ZData();
 			PTD->PSOR |= MASK(4);
 			delayMs(10);
+			
+			line[0] = 'X';
+			delayMs(10);
+			Print_String(line, 3);
+			delayMs(10);
+			print_base10(data[0], 5);
+			Print_Newline();
+			
+			line[0] = 'Y';
+			delayMs(10);
+			Print_String(line,3 );
+			delayMs(10);
+			print_base10(data[1], 5);
+			Print_Newline();
+			
+			line[0] = 'Z';
+			delayMs(10);
+			Print_String(line, 3);
+			delayMs(10);
+			print_base10(data[2], 5);
+			Print_Newline();
+			
 		} else {
 			data[0] = flag;
 			data[1] = 0;
 			data[2] = 0;
+			
+			delayMs(10);
+			print_base10(data[0], 5);
+			Print_Newline();
 		}
-		line[0] = 'X';
-		delayMs(10);
-		Print_String(line, 3);
-		delayMs(10);
-		print_base10(data[0], 5);
-		Print_Newline();
 		
-		line[0] = 'Y';
-		delayMs(10);
-		Print_String(line,3 );
-		delayMs(10);
-		print_base10(data[1], 5);
-		Print_Newline();
-		
-		line[0] = 'Z';
-		delayMs(10);
-		Print_String(line, 3);
-		delayMs(10);
-		print_base10(data[2], 5);
-		Print_Newline();
 		
 		
 		//PTD->PSOR |= MASK(4);
