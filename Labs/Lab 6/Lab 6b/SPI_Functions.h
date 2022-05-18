@@ -3,6 +3,8 @@
 
 void init_SPI1(void);
 
-uint32_t SPIsend(uint32_t data);
+void SPIsend(uint32_t data);
+
+uint32_t SPIsendRec(uint32_t data);
 
 void Test_SPI_Loopback(void);

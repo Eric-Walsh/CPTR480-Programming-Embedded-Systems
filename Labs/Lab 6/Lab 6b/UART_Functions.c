@@ -24,7 +24,7 @@ void init_UART2(){
 	PORTD->PCR[3] |= PORT_PCR_MUX(3);
 	
 	//Turn on transmit complete inturrupt
-	UART2->C2 |= UART_C2_TCIE_MASK;
+	//UART2->C2 |= UART_C2_TCIE_MASK;
 	
 	//assign Baud rate
 	uint16_t sbr = (uint16_t)((CLOCK_RATE)/(BAUD_RATE*16));
@@ -41,16 +41,16 @@ void init_UART2(){
 	//Enable Transit
 	UART2->C2 |= 0x8;
 	
-	NVIC_SetPriority(UART2_IRQn, 128); // 0, 64, 128 or 192
-	NVIC_ClearPendingIRQ(UART2_IRQn); 
-	NVIC_EnableIRQ(UART2_IRQn);
+	//NVIC_SetPriority(UART2_IRQn, 128); // 0, 64, 128 or 192
+	//NVIC_ClearPendingIRQ(UART2_IRQn); 
+	//NVIC_EnableIRQ(UART2_IRQn);
 }
 
 void UART2_Transmit(uint32_t data){
 	UART2_D = data;
 }
 
-void Print_String(char string[]){
+void Print_String(char string[], int length){
 	uint32_t ascii = 0;
 	int i = 0;
 	while(!(UART2_S1 & 0x80)){};
@@ -60,7 +60,7 @@ void Print_String(char string[]){
 		UART2_Transmit(ascii);
 		while(!(UART2_S1 & 0x80)){};
 		delayMs(2);
-	}while(ascii != 0);
+	}while(i < length);
 }
 
 void Print_Newline(void){
@@ -102,10 +102,10 @@ void print_base10(uint32_t data, uint32_t numdig)
 void UART2_IRQHandler(void){
 	NVIC_ClearPendingIRQ(UART2_IRQn);
 	
-	if(!Q_Empty(&q)){
+	/*if(!Q_Empty(&q)){
 		UART2_Transmit(Q_Dequeue(&q));
 		delayMs(2);
-	}
+	}*/          
 
 
 }

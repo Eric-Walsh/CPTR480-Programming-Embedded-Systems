@@ -10,3 +10,6 @@
 .\objects\mag_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
 .\objects\mag_functions.o: SPI_Functions.h
 .\objects\mag_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
+.\objects\mag_functions.o: LEDs.h
+.\objects\mag_functions.o: UART_Functions.h
+.\objects\mag_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h

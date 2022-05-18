@@ -9,3 +9,5 @@
 .\objects\spi_functions.o: gpio_defs.h
 .\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
 .\objects\spi_functions.o: LEDs.h
+.\objects\spi_functions.o: UART_Functions.h
+.\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h

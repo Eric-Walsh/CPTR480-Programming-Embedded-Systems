@@ -9,34 +9,60 @@ int main(){
 	init_RGB_LEDs();
 	init_SPI1();
 	init_UART2();
-	uint32_t data[3];
+	init_Mag();
+	uint32_t data[3] = {0,0,0};
 	uint32_t line[] = {'X', '=', ' '};
-	while(1){
-		delayMs(50);
-		data[0] = get_XData();
-		delayMs(10);
-		data[1] = get_YData();
-		delayMs(10);
-		data[2] = get_ZData();
-		delayMs(10);
+	uint32_t flag;
+	while(1){   
 		
-		Print_String(line);
+		PTD->PCOR |= MASK(4);
+		flag = get_Mag_Status();
+		PTD->PSOR |= MASK(4);
+		
+		if(flag & 0x4){
+			delayMs(10);
+			PTD->PCOR |= MASK(4);
+			data[0] = get_XData();
+			PTD->PSOR |= MASK(4);
+			
+			delayMs(10);
+			PTD->PCOR |= MASK(4);
+			data[1] = get_YData();
+			PTD->PSOR |= MASK(4);
+			
+			delayMs(10);
+			PTD->PCOR |= MASK(4);
+			data[2] = get_ZData();
+			PTD->PSOR |= MASK(4);
+			delayMs(10);
+		} else {
+			data[0] = flag;
+			data[1] = 0;
+			data[2] = 0;
+		}
+		line[0] = 'X';
 		delayMs(10);
-		print_base10(data[0], 4);
+		Print_String(line, 3);
+		delayMs(10);
+		print_base10(data[0], 5);
 		Print_Newline();
 		
 		line[0] = 'Y';
-		Print_String(line);
 		delayMs(10);
-		print_base10(data[1], 4);
+		Print_String(line,3 );
+		delayMs(10);
+		print_base10(data[1], 5);
 		Print_Newline();
 		
 		line[0] = 'Z';
-		Print_String(line);
 		delayMs(10);
-		print_base10(data[2], 4);
+		Print_String(line, 3);
+		delayMs(10);
+		print_base10(data[2], 5);
 		Print_Newline();
 		
+		
+		//PTD->PSOR |= MASK(4);
 		delayMs(5000);
 	}
 }
