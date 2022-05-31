@@ -27,6 +27,60 @@ Project File Date:  05/24/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling main.c...
+TPM_Functions.h(5): warning:  #1295-D: Deprecated declaration init_dist_TPM0 - give arg types
+  void init_dist_TPM0();
+TPM_Functions.h(7): warning:  #1-D: last line of file ends without a newline
+  void init_motor_TPM0();
+TPM_Functions.h(7): warning:  #1295-D: Deprecated declaration init_motor_TPM0 - give arg types
+  void init_motor_TPM0();
+Motor_Functions.h(3): warning:  #1295-D: Deprecated declaration right_wheel_forward - give arg types
+  void right_wheel_forward();
+Motor_Functions.h(5): warning:  #1295-D: Deprecated declaration left_wheel_forward - give arg types
+  void left_wheel_forward();
+Motor_Functions.h(7): warning:  #1295-D: Deprecated declaration right_wheel_stop - give arg types
+  void right_wheel_stop();
+Motor_Functions.h(9): warning:  #1295-D: Deprecated declaration left_wheel_stop - give arg types
+  void left_wheel_stop();
+Motor_Functions.h(11): warning:  #1295-D: Deprecated declaration go_Forward - give arg types
+  void go_Forward();
+Motor_Functions.h(13): warning:  #1295-D: Deprecated declaration stop - give arg types
+  void stop();
+Motor_Functions.h(15): warning:  #1295-D: Deprecated declaration turn_Left - give arg types
+  void turn_Left();
+Motor_Functions.h(17): warning:  #1295-D: Deprecated declaration turn_Right - give arg types
+  void turn_Right();
+Motor_Functions.h(19): warning:  #1295-D: Deprecated declaration right_wheel_backward - give arg types
+  void right_wheel_backward();
+Motor_Functions.h(21): warning:  #1-D: last line of file ends without a newline
+  void left_wheel_backward();
+Motor_Functions.h(21): warning:  #1295-D: Deprecated declaration left_wheel_backward - give arg types
+  void left_wheel_backward();
+main.c: 14 warnings, 0 errors
+compiling switches.c...
+Motor_Functions.h(3): warning:  #1295-D: Deprecated declaration right_wheel_forward - give arg types
+  void right_wheel_forward();
+Motor_Functions.h(5): warning:  #1295-D: Deprecated declaration left_wheel_forward - give arg types
+  void left_wheel_forward();
+Motor_Functions.h(7): warning:  #1295-D: Deprecated declaration right_wheel_stop - give arg types
+  void right_wheel_stop();
+Motor_Functions.h(9): warning:  #1295-D: Deprecated declaration left_wheel_stop - give arg types
+  void left_wheel_stop();
+Motor_Functions.h(11): warning:  #1295-D: Deprecated declaration go_Forward - give arg types
+  void go_Forward();
+Motor_Functions.h(13): warning:  #1295-D: Deprecated declaration stop - give arg types
+  void stop();
+Motor_Functions.h(15): warning:  #1295-D: Deprecated declaration turn_Left - give arg types
+  void turn_Left();
+Motor_Functions.h(17): warning:  #1295-D: Deprecated declaration turn_Right - give arg types
+  void turn_Right();
+Motor_Functions.h(19): warning:  #1295-D: Deprecated declaration right_wheel_backward - give arg types
+  void right_wheel_backward();
+Motor_Functions.h(21): warning:  #1-D: last line of file ends without a newline
+  void left_wheel_backward();
+Motor_Functions.h(21): warning:  #1295-D: Deprecated declaration left_wheel_backward - give arg types
+  void left_wheel_backward();
+switches.c: 11 warnings, 0 errors
 compiling Motor_Functions.c...
 TPM_Functions.h(5): warning:  #1295-D: Deprecated declaration init_dist_TPM0 - give arg types
   void init_dist_TPM0();
@@ -48,16 +102,20 @@ Motor_Functions.h(13): warning:  #1295-D: Deprecated declaration stop - give arg
   void stop();
 Motor_Functions.h(15): warning:  #1295-D: Deprecated declaration turn_Left - give arg types
   void turn_Left();
-Motor_Functions.h(17): warning:  #1-D: last line of file ends without a newline
-  void turn_Right();
 Motor_Functions.h(17): warning:  #1295-D: Deprecated declaration turn_Right - give arg types
   void turn_Right();
-Motor_Functions.c(54): warning:  #1-D: last line of file ends without a newline
+Motor_Functions.h(19): warning:  #1295-D: Deprecated declaration right_wheel_backward - give arg types
+  void right_wheel_backward();
+Motor_Functions.h(21): warning:  #1-D: last line of file ends without a newline
+  void left_wheel_backward();
+Motor_Functions.h(21): warning:  #1295-D: Deprecated declaration left_wheel_backward - give arg types
+  void left_wheel_backward();
+Motor_Functions.c(64): warning:  #1-D: last line of file ends without a newline
   }
-Motor_Functions.c: 13 warnings, 0 errors
+Motor_Functions.c: 15 warnings, 0 errors
 linking...
-Program Size: Code=1820 RO-data=208 RW-data=0 ZI-data=352  
-".\Objects\Lab 7.axf" - 0 Error(s), 13 Warning(s).
+Program Size: Code=1848 RO-data=208 RW-data=0 ZI-data=352  
+".\Objects\Lab 7.axf" - 0 Error(s), 40 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -84,8 +142,8 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device\Source\system_MKL25Z4.c
       Include file:  Device\Source\system_MKL25Z4.h
+      Source file:   Device\Source\system_MKL25Z4.c
       Source file:   Device\Source\ARM\startup_MKL25Z4.s
 Build Time Elapsed:  00:00:01
 </pre>

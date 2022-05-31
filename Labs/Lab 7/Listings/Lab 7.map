@@ -11,9 +11,11 @@ Section Cross References
     main.o(i.main) refers to switches.o(i.init_switch) for init_switch
     tpm_functions.o(i.TPM0_IRQHandler) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     motor_functions.o(i.go_Forward) refers to motor_functions.o(i.right_wheel_forward) for right_wheel_forward
-    motor_functions.o(i.go_Forward) refers to motor_functions.o(i.left_wheel_forward) for left_wheel_forward
+    motor_functions.o(i.go_Forward) refers to motor_functions.o(i.left_wheel_backward) for left_wheel_backward
+    motor_functions.o(i.left_wheel_backward) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     motor_functions.o(i.left_wheel_forward) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     motor_functions.o(i.left_wheel_stop) refers to leds.o(i.toggle_RGB_LEDs) for toggle_RGB_LEDs
+    motor_functions.o(i.right_wheel_backward) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     motor_functions.o(i.right_wheel_forward) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     motor_functions.o(i.right_wheel_stop) refers to leds.o(i.toggle_RGB_LEDs) for toggle_RGB_LEDs
     motor_functions.o(i.stop) refers to motor_functions.o(i.right_wheel_stop) for right_wheel_stop
@@ -181,6 +183,7 @@ Removing Unused input sections from the image.
     Removing tpm_functions.o(i.init_dist_TPM0), (180 bytes).
     Removing motor_functions.o(.rev16_text), (4 bytes).
     Removing motor_functions.o(.revsh_text), (4 bytes).
+    Removing motor_functions.o(i.right_wheel_backward), (28 bytes).
     Removing motor_functions.o(.constdata), (12 bytes).
     Removing switches.o(.rev16_text), (4 bytes).
     Removing switches.o(.revsh_text), (4 bytes).
@@ -205,7 +208,7 @@ Removing Unused input sections from the image.
     Removing system_mkl25z4.o(.data), (4 bytes).
     Removing system_mkl25z4.o(i.__ARM_common_switch8), (28 bytes).
 
-33 unused section(s) (total 1520 bytes) removed from the image.
+34 unused section(s) (total 1548 bytes) removed from the image.
 
 ==============================================================================
 
@@ -216,57 +219,57 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      192  startup_mkl25z4.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
     ../clib/angel/scatterp.s                 0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
+    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/cfplib/fpinit.c                 0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -355,14 +358,15 @@ Image Symbol Table
     i.init_RGB_LEDs                          0x000004d4   Section        0  leds.o(i.init_RGB_LEDs)
     i.init_motor_TPM0                        0x00000578   Section        0  tpm_functions.o(i.init_motor_TPM0)
     i.init_switch                            0x0000062c   Section        0  switches.o(i.init_switch)
-    i.left_wheel_forward                     0x000006fc   Section        0  motor_functions.o(i.left_wheel_forward)
-    i.left_wheel_stop                        0x00000718   Section        0  motor_functions.o(i.left_wheel_stop)
-    i.main                                   0x00000734   Section        0  main.o(i.main)
-    i.right_wheel_forward                    0x00000760   Section        0  motor_functions.o(i.right_wheel_forward)
-    i.right_wheel_stop                       0x0000077c   Section        0  motor_functions.o(i.right_wheel_stop)
-    i.toggle_RGB_LEDs                        0x00000798   Section        0  leds.o(i.toggle_RGB_LEDs)
-    i.turn_Left                              0x000007c4   Section        0  motor_functions.o(i.turn_Left)
-    i.turn_Right                             0x000007d0   Section        0  motor_functions.o(i.turn_Right)
+    i.left_wheel_backward                    0x000006fc   Section        0  motor_functions.o(i.left_wheel_backward)
+    i.left_wheel_forward                     0x00000718   Section        0  motor_functions.o(i.left_wheel_forward)
+    i.left_wheel_stop                        0x00000734   Section        0  motor_functions.o(i.left_wheel_stop)
+    i.main                                   0x00000750   Section        0  main.o(i.main)
+    i.right_wheel_forward                    0x0000077c   Section        0  motor_functions.o(i.right_wheel_forward)
+    i.right_wheel_stop                       0x00000798   Section        0  motor_functions.o(i.right_wheel_stop)
+    i.toggle_RGB_LEDs                        0x000007b4   Section        0  leds.o(i.toggle_RGB_LEDs)
+    i.turn_Left                              0x000007e0   Section        0  motor_functions.o(i.turn_Left)
+    i.turn_Right                             0x000007ec   Section        0  motor_functions.o(i.turn_Right)
     .bss                                     0x1ffff000   Section       96  libspace.o(.bss)
     HEAP                                     0x1ffff060   Section        0  startup_mkl25z4.o(HEAP)
     STACK                                    0x1ffff060   Section      256  startup_mkl25z4.o(STACK)
@@ -514,16 +518,17 @@ Image Symbol Table
     init_RGB_LEDs                            0x000004d5   Thumb Code   146  leds.o(i.init_RGB_LEDs)
     init_motor_TPM0                          0x00000579   Thumb Code   160  tpm_functions.o(i.init_motor_TPM0)
     init_switch                              0x0000062d   Thumb Code   186  switches.o(i.init_switch)
-    left_wheel_forward                       0x000006fd   Thumb Code    20  motor_functions.o(i.left_wheel_forward)
-    left_wheel_stop                          0x00000719   Thumb Code    20  motor_functions.o(i.left_wheel_stop)
-    main                                     0x00000735   Thumb Code    38  main.o(i.main)
-    right_wheel_forward                      0x00000761   Thumb Code    20  motor_functions.o(i.right_wheel_forward)
-    right_wheel_stop                         0x0000077d   Thumb Code    20  motor_functions.o(i.right_wheel_stop)
-    toggle_RGB_LEDs                          0x00000799   Thumb Code    40  leds.o(i.toggle_RGB_LEDs)
-    turn_Left                                0x000007c5   Thumb Code    12  motor_functions.o(i.turn_Left)
-    turn_Right                               0x000007d1   Thumb Code    12  motor_functions.o(i.turn_Right)
-    Region$$Table$$Base                      0x000007dc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000007ec   Number         0  anon$$obj.o(Region$$Table)
+    left_wheel_backward                      0x000006fd   Thumb Code    20  motor_functions.o(i.left_wheel_backward)
+    left_wheel_forward                       0x00000719   Thumb Code    22  motor_functions.o(i.left_wheel_forward)
+    left_wheel_stop                          0x00000735   Thumb Code    20  motor_functions.o(i.left_wheel_stop)
+    main                                     0x00000751   Thumb Code    38  main.o(i.main)
+    right_wheel_forward                      0x0000077d   Thumb Code    22  motor_functions.o(i.right_wheel_forward)
+    right_wheel_stop                         0x00000799   Thumb Code    20  motor_functions.o(i.right_wheel_stop)
+    toggle_RGB_LEDs                          0x000007b5   Thumb Code    40  leds.o(i.toggle_RGB_LEDs)
+    turn_Left                                0x000007e1   Thumb Code    12  motor_functions.o(i.turn_Left)
+    turn_Right                               0x000007ed   Thumb Code    12  motor_functions.o(i.turn_Right)
+    Region$$Table$$Base                      0x000007f8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000808   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x1ffff000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1ffff060   Data           0  libspace.o(.bss)
 
@@ -535,105 +540,106 @@ Memory Map of the image
 
   Image Entry point : 0x00000149
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000007ec, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000808, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000007ec, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000808, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO          369    RESET               startup_mkl25z4.o
-    0x000000c0   0x000000c0   0x00000008   Code   RO          419  * !!!main             c_p.l(__main.o)
-    0x000000c8   0x000000c8   0x0000003c   Code   RO          588    !!!scatter          c_p.l(__scatter.o)
-    0x00000104   0x00000104   0x0000001c   Code   RO          590    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x00000120   0x00000120   0x00000002   Code   RO          457    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          471    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          473    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          476    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          478    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          480    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          483    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          485    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          487    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          489    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          491    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          493    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          495    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          497    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          499    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          501    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          503    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          507    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          509    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          511    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO          513    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000002   Code   RO          514    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
-    0x00000124   0x00000124   0x00000002   Code   RO          545    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          571    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          573    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          576    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          579    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          581    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO          584    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000002   Code   RO          585    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x00000128   0x00000128   0x00000000   Code   RO          421    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x00000128   0x00000128   0x00000000   Code   RO          427    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x00000128   0x00000128   0x00000006   Code   RO          439    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0000012e   0x0000012e   0x00000000   Code   RO          429    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0000012e   0x0000012e   0x00000004   Code   RO          430    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x00000132   0x00000132   0x00000000   Code   RO          432    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x00000132   0x00000132   0x00000008   Code   RO          433    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x0000013a   0x0000013a   0x00000002   Code   RO          462    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x0000013c   0x0000013c   0x00000000   Code   RO          518    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x0000013c   0x0000013c   0x00000004   Code   RO          519    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x00000140   0x00000140   0x00000006   Code   RO          520    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO          381    RESET               startup_mkl25z4.o
+    0x000000c0   0x000000c0   0x00000008   Code   RO          431  * !!!main             c_p.l(__main.o)
+    0x000000c8   0x000000c8   0x0000003c   Code   RO          600    !!!scatter          c_p.l(__scatter.o)
+    0x00000104   0x00000104   0x0000001c   Code   RO          602    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x00000120   0x00000120   0x00000002   Code   RO          469    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          483    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          485    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          488    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          490    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          492    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          495    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          497    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          499    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          501    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          503    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          505    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          507    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          509    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          511    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          513    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          515    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          519    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          521    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          523    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO          525    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000002   Code   RO          526    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
+    0x00000124   0x00000124   0x00000002   Code   RO          557    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          583    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          585    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          588    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          591    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          593    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO          596    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000002   Code   RO          597    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x00000128   0x00000128   0x00000000   Code   RO          433    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x00000128   0x00000128   0x00000000   Code   RO          439    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x00000128   0x00000128   0x00000006   Code   RO          451    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0000012e   0x0000012e   0x00000000   Code   RO          441    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0000012e   0x0000012e   0x00000004   Code   RO          442    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x00000132   0x00000132   0x00000000   Code   RO          444    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x00000132   0x00000132   0x00000008   Code   RO          445    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x0000013a   0x0000013a   0x00000002   Code   RO          474    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x0000013c   0x0000013c   0x00000000   Code   RO          530    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x0000013c   0x0000013c   0x00000004   Code   RO          531    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x00000140   0x00000140   0x00000006   Code   RO          532    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x00000146   0x00000146   0x00000002   PAD
-    0x00000148   0x00000148   0x00000040   Code   RO          371  * .text               startup_mkl25z4.o
-    0x00000188   0x00000188   0x00000006   Code   RO          417    .text               c_p.l(heapauxi.o)
-    0x0000018e   0x0000018e   0x0000003e   Code   RO          443    .text               c_p.l(sys_stackheap_outer.o)
-    0x000001cc   0x000001cc   0x00000010   Code   RO          446    .text               c_p.l(exit.o)
-    0x000001dc   0x000001dc   0x00000008   Code   RO          458    .text               c_p.l(libspace.o)
-    0x000001e4   0x000001e4   0x0000000c   Code   RO          515    .text               c_p.l(sys_exit.o)
-    0x000001f0   0x000001f0   0x00000002   Code   RO          534    .text               c_p.l(use_no_semi.o)
-    0x000001f2   0x000001f2   0x00000000   Code   RO          536    .text               c_p.l(indicate_semi.o)
+    0x00000148   0x00000148   0x00000040   Code   RO          383  * .text               startup_mkl25z4.o
+    0x00000188   0x00000188   0x00000006   Code   RO          429    .text               c_p.l(heapauxi.o)
+    0x0000018e   0x0000018e   0x0000003e   Code   RO          455    .text               c_p.l(sys_stackheap_outer.o)
+    0x000001cc   0x000001cc   0x00000010   Code   RO          458    .text               c_p.l(exit.o)
+    0x000001dc   0x000001dc   0x00000008   Code   RO          470    .text               c_p.l(libspace.o)
+    0x000001e4   0x000001e4   0x0000000c   Code   RO          527    .text               c_p.l(sys_exit.o)
+    0x000001f0   0x000001f0   0x00000002   Code   RO          546    .text               c_p.l(use_no_semi.o)
+    0x000001f2   0x000001f2   0x00000000   Code   RO          548    .text               c_p.l(indicate_semi.o)
     0x000001f2   0x000001f2   0x00000002   PAD
-    0x000001f4   0x000001f4   0x00000070   Code   RO          219    i.PORTA_IRQHandler  switches.o
-    0x00000264   0x00000264   0x00000138   Code   RO          380    i.SystemInit        system_mkl25z4.o
+    0x000001f4   0x000001f4   0x00000070   Code   RO          231    i.PORTA_IRQHandler  switches.o
+    0x00000264   0x00000264   0x00000138   Code   RO          392    i.SystemInit        system_mkl25z4.o
     0x0000039c   0x0000039c   0x0000000e   Code   RO          107    i.TPM0_IRQHandler   tpm_functions.o
     0x000003aa   0x000003aa   0x00000002   PAD
-    0x000003ac   0x000003ac   0x00000018   Code   RO          220    i.__NVIC_ClearPendingIRQ  switches.o
-    0x000003c4   0x000003c4   0x0000001c   Code   RO          328    i.delayMs           lcd_lib_4bit_20b.o
+    0x000003ac   0x000003ac   0x00000018   Code   RO          232    i.__NVIC_ClearPendingIRQ  switches.o
+    0x000003c4   0x000003c4   0x0000001c   Code   RO          340    i.delayMs           lcd_lib_4bit_20b.o
     0x000003e0   0x000003e0   0x0000000c   Code   RO          144    i.go_Forward        motor_functions.o
-    0x000003ec   0x000003ec   0x00000012   Code   RO          149    i.stop              motor_functions.o
+    0x000003ec   0x000003ec   0x00000012   Code   RO          151    i.stop              motor_functions.o
     0x000003fe   0x000003fe   0x00000002   PAD
-    0x00000400   0x00000400   0x00000010   Code   RO          370    .ARM.__at_0x400     startup_mkl25z4.o
-    0x00000410   0x00000410   0x00000078   Code   RO          221    i.__NVIC_SetPriority  switches.o
+    0x00000400   0x00000400   0x00000010   Code   RO          382    .ARM.__at_0x400     startup_mkl25z4.o
+    0x00000410   0x00000410   0x00000078   Code   RO          233    i.__NVIC_SetPriority  switches.o
     0x00000488   0x00000488   0x0000004c   Code   RO            3    i.control_RGB_LEDs  leds.o
     0x000004d4   0x000004d4   0x000000a4   Code   RO            4    i.init_RGB_LEDs     leds.o
     0x00000578   0x00000578   0x000000b4   Code   RO          109    i.init_motor_TPM0   tpm_functions.o
-    0x0000062c   0x0000062c   0x000000d0   Code   RO          222    i.init_switch       switches.o
-    0x000006fc   0x000006fc   0x0000001c   Code   RO          145    i.left_wheel_forward  motor_functions.o
-    0x00000718   0x00000718   0x0000001c   Code   RO          146    i.left_wheel_stop   motor_functions.o
-    0x00000734   0x00000734   0x0000002c   Code   RO           66    i.main              main.o
-    0x00000760   0x00000760   0x0000001c   Code   RO          147    i.right_wheel_forward  motor_functions.o
-    0x0000077c   0x0000077c   0x0000001c   Code   RO          148    i.right_wheel_stop  motor_functions.o
-    0x00000798   0x00000798   0x0000002c   Code   RO            5    i.toggle_RGB_LEDs   leds.o
-    0x000007c4   0x000007c4   0x0000000c   Code   RO          150    i.turn_Left         motor_functions.o
-    0x000007d0   0x000007d0   0x0000000c   Code   RO          151    i.turn_Right        motor_functions.o
-    0x000007dc   0x000007dc   0x00000010   Data   RO          586    Region$$Table       anon$$obj.o
+    0x0000062c   0x0000062c   0x000000d0   Code   RO          234    i.init_switch       switches.o
+    0x000006fc   0x000006fc   0x0000001c   Code   RO          145    i.left_wheel_backward  motor_functions.o
+    0x00000718   0x00000718   0x0000001c   Code   RO          146    i.left_wheel_forward  motor_functions.o
+    0x00000734   0x00000734   0x0000001c   Code   RO          147    i.left_wheel_stop   motor_functions.o
+    0x00000750   0x00000750   0x0000002c   Code   RO           66    i.main              main.o
+    0x0000077c   0x0000077c   0x0000001c   Code   RO          149    i.right_wheel_forward  motor_functions.o
+    0x00000798   0x00000798   0x0000001c   Code   RO          150    i.right_wheel_stop  motor_functions.o
+    0x000007b4   0x000007b4   0x0000002c   Code   RO            5    i.toggle_RGB_LEDs   leds.o
+    0x000007e0   0x000007e0   0x0000000c   Code   RO          152    i.turn_Left         motor_functions.o
+    0x000007ec   0x000007ec   0x0000000c   Code   RO          153    i.turn_Right        motor_functions.o
+    0x000007f8   0x000007f8   0x00000010   Data   RO          598    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000007ec, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00000808, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x000007ec, Size: 0x00000160, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x00000808, Size: 0x00000160, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff000        -       0x00000060   Zero   RW          459    .bss                c_p.l(libspace.o)
-    0x1ffff060        -       0x00000000   Zero   RW          368    HEAP                startup_mkl25z4.o
-    0x1ffff060        -       0x00000100   Zero   RW          367    STACK               startup_mkl25z4.o
+    0x1ffff000        -       0x00000060   Zero   RW          471    .bss                c_p.l(libspace.o)
+    0x1ffff060        -       0x00000000   Zero   RW          380    HEAP                startup_mkl25z4.o
+    0x1ffff060        -       0x00000100   Zero   RW          379    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -646,14 +652,14 @@ Image component sizes
         28          4          0          0          0        562   lcd_lib_4bit_20b.o
        284         28          0          0          0     217873   leds.o
         44          6          0          0          0        499   main.o
-       166         32          0          0          0       4161   motor_functions.o
+       194         36          0          0          0       4695   motor_functions.o
         80         44        192          0        256       1076   startup_mkl25z4.o
        464         42          0          0          0      10341   switches.o
        312         46          0          0          0        673   system_mkl25z4.o
        194         20          0          0          0       1060   tpm_functions.o
 
     ----------------------------------------------------------------------
-      1576        222        208          0        256     236245   Object Totals
+      1604        226        208          0        256     236779   Object Totals
          0          0         16          0          0          0   (incl. Generated)
          4          0          0          0          0          0   (incl. Padding)
 
@@ -701,15 +707,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1820        238        208          0        352     235797   Grand Totals
-      1820        238        208          0        352     235797   ELF Image Totals
-      1820        238        208          0          0          0   ROM Totals
+      1848        242        208          0        352     236287   Grand Totals
+      1848        242        208          0        352     236287   ELF Image Totals
+      1848        242        208          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2028 (   1.98kB)
+    Total RO  Size (Code + RO Data)                 2056 (   2.01kB)
     Total RW  Size (RW Data + ZI Data)               352 (   0.34kB)
-    Total ROM Size (Code + RO Data + RW Data)       2028 (   1.98kB)
+    Total ROM Size (Code + RO Data + RW Data)       2056 (   2.01kB)
 
 ==============================================================================
 

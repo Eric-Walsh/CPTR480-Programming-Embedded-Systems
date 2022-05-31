@@ -10,6 +10,8 @@ void left_wheel_stop();
 	
 void go_Forward();
 
+void go_Backward();
+
 void stop();
 	
 void turn_Left();
