@@ -6,7 +6,7 @@ void UART2_Transmit(uint32_t data);
 
 void Print_String(char string[], int length);
 
-void delayMs(uint32_t n);
+
 
 void Print_Newline(void);
 

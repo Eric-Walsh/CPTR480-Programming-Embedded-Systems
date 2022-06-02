@@ -52,11 +52,8 @@ void PIT_IRQHandler(void) {
 	if (PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK){
 			//Clear status flags for timer channel 0
 		PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
-		count++;
 		
-		if(count >= 1000){
-			control_RGB_LEDs(1,0,0);
-		}
+			control_White_LEDs(0x10);
 		
 	} 
 	return;

@@ -41,17 +41,23 @@ void PORTA_IRQHandler(void) {
 	if (SW1_PRESSED) {
 		if(SW2_PRESSED){
 			Test_Motors(1);
+			control_White_LEDs(0x3);
 		}else if (SW4_PRESSED){
 			Test_Motors(2);
+			control_White_LEDs(0x9);
 		} else if (SW5_PRESSED){
 			Test_Motors(3);
+			control_White_LEDs(0x11);
 		} else if (SW2_PRESSED && SW4_PRESSED){
 			Test_Motors(4);
+			control_White_LEDs(0xB);
 		} else {
 			Test_Motors(0);
+			control_White_LEDs(0x1);
 		}
 	} else if(SW2_PRESSED){
 		Test_ADC();
+		control_White_LEDs(0x2);
 		
 	}else if(SW3_PRESSED){
 		//DO NOT USE 
@@ -59,12 +65,15 @@ void PORTA_IRQHandler(void) {
 		
 	}else if(SW4_PRESSED){
 		Test_Mag();
+		control_White_LEDs(0x4);
 		
 	}else if(SW5_PRESSED){
 		if (SW2_PRESSED){
 			Test_UART();
+			control_White_LEDs(0x12);
 		} else if (SW4_PRESSED){
 			Test_USound();
+			control_White_LEDs(0x18);
 		}
 		
 	}

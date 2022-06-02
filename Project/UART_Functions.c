@@ -1,18 +1,13 @@
 #include "MKL25z4.h"
 #include "gpio_defs.h"
 #include "Queue_Functions.h"
+#include "LCD_Functions.h"
 
 const uint16_t BAUD_RATE = 9600;
 const uint32_t CLOCK_RATE = 24000000;
 Q_T q;
 
-void delayMs(uint32_t n)
-{
-uint32_t i;
-uint32_t j;
-for(i=0; i < n; i++)
-		for(j=0; j < 3500; j++) {}
-}
+
 
 void init_UART2(){
 	//send clock to UART

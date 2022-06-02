@@ -3,8 +3,10 @@
 #include "SPI_Functions.h"
 #include "LEDs.h"
 #include "UART_Functions.h"
+#include "LCD_Functions.h"
 
 void init_Mag(void){
+	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	PORTD->PCR[4] &= ~PORT_PCR_MUX_MASK;
 	PORTD->PCR[4] |= PORT_PCR_MUX(1);
 	
@@ -14,12 +16,12 @@ void init_Mag(void){
 	PTD->PDDR |= MASK(4);
 	PTD->PSOR |= MASK(4);
 	
-	PTD->PDDR |= MASK(0);
-	PTD->PSOR |= MASK(0);
+	//PTD->PDDR |= MASK(0);
+	//PTD->PSOR |= MASK(0);
 	
 	delayMs(10);
 	PTD->PCOR |= MASK(4);
-	uint32_t test =  SPIsendRec(0xCF);
+	uint32_t test = SPIsendRec(0xCF);
 	PTD->PSOR |= MASK(4);
 	if(test != 0x40){
 		control_RGB_LEDs(1,0,0);

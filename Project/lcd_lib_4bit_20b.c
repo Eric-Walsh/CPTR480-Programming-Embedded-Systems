@@ -132,5 +132,5 @@ void delayMs(uint32_t n)
 uint32_t i;
 uint32_t j;
 for(i=0; i < n; i++)
-		for(j=0; j < 3500; j++) {}
+		for(j=0; j < 8000; j++) {}
 }

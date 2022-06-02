@@ -3,7 +3,7 @@
 
 
 
-void init_TPM0(){
+void init_TPM(){
 	//clock to TPM and port A
 	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;
 	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
