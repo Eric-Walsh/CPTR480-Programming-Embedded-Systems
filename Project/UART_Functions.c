@@ -2,6 +2,7 @@
 #include "gpio_defs.h"
 #include "Queue_Functions.h"
 #include "LCD_Functions.h"
+#include "LEDs.h"
 
 const uint16_t BAUD_RATE = 9600;
 const uint32_t CLOCK_RATE = 24000000;
@@ -43,6 +44,7 @@ void init_UART2(){
 
 void UART2_Transmit(uint32_t data){
 	UART2_D = data;
+	//control_White_LEDs(data);
 }
 
 void Print_String(char string[], int length){
@@ -59,6 +61,7 @@ void Print_String(char string[], int length){
 }
 
 void Print_Newline(void){
+	UART2_Transmit(0x0d);
 	UART2_Transmit(0x0a);
 	delayMs(2);
 }

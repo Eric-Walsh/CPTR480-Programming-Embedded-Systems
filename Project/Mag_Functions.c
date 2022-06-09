@@ -20,9 +20,9 @@ void init_Mag(void){
 	//PTD->PSOR |= MASK(0);
 	
 	delayMs(10);
-	PTD->PCOR |= MASK(4);
-	uint32_t test = SPIsendRec(0xCF);
-	PTD->PSOR |= MASK(4);
+	
+	uint32_t test = SPIsendRec(0xCF, 0xFF);
+	
 	if(test != 0x40){
 		control_RGB_LEDs(1,0,0);
 		print_base10(test, 4);
@@ -32,43 +32,52 @@ void init_Mag(void){
 	}
 	
 	delayMs(10);
-	PTD->PCOR |= MASK(4);
+	
 	//delayMs(50);
-	SPIsend(0x6081);
-	PTD->PSOR |= MASK(4);
+	test = SPIsendRec(0x60, 0x80);
+	test = SPIsendRec(0xE0, 0xFF);
+	if(test != 0x80){
+		control_RGB_LEDs(1,0,0);
+		print_base10(test, 4);
+		Print_Newline();
+	}	else {
+		control_RGB_LEDs(0,1,0);
+	}
+	
+	
 }
 
 uint32_t get_Mag_Status(){
 	uint32_t data = 0;
-	data = SPIsendRec(0xE7);
+	data = SPIsendRec(0xE7, 0xFF);
 	
 	return data;
 }
 
 uint32_t get_XData(){
 	uint32_t data = 0;
-	data = SPIsendRec(0xE8) ;
-	data &= 0xFF;
-	data |= SPIsendRec(0xE9) << 8;
-	data &= 0xFFFF;
+	data = SPIsendRec(0xE8, 0xFF) ;
+	//data &= 0xFF;
+	data |= SPIsendRec(0xE9, 0xFF) << 8;
+	//data &= 0xFFFF;
 	
 	return data;
 }
 
 uint32_t get_YData(){
 	uint32_t data = 0;
-	data = SPIsendRec(0xEA) ;
-	data &= 0xFF;
-	data |= SPIsendRec(0xEB) << 8;
-	data &= 0xFFFF;
+	data = SPIsendRec(0xEA, 0xFF) ;
+	//data &= 0xFF;
+	data |= SPIsendRec(0xEB, 0xFF) << 8;
+	//data &= 0xFFFF;
 	return data;
 }
 
 uint32_t get_ZData(){
 	uint32_t data = 0;
-	data = SPIsendRec(0xEC) ;
-	data &= 0xFF;
-	data |= SPIsendRec(0xED)   << 8;
-	data &= 0xFFFF;
+	data = SPIsendRec(0xEC, 0xFF) ;
+	//data &= 0xFF;
+	data |= SPIsendRec(0xED, 0xFF)   << 8;
+	//data &= 0xFFFF;
 	return data;
 }

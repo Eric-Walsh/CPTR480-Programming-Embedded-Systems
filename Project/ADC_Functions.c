@@ -1,5 +1,6 @@
 #include "MKL25Z4.h"
 #include "UART_Functions.h"
+#include "LCD_Functions.h"
 
 enum ADC_channel{SE0 = 0x00, SE4ab = 0x04, SE3 = 0x03, SE7a = 0x07, SE8 = 0x08, SE9 = 0x09, SE12 = 0x0C, SE13 = 0x0D}; 
 enum ADC_mux{A = 0, B = 1};
@@ -72,8 +73,8 @@ void Init_ADC(void){
 		
         //configre the ADC SC3 register
 		ADC0_SC3 |= ADC_SC3_ADCO(0); // AVGE = 1 after initiating conversion
-		ADC0_SC3 |= ADC_SC3_AVGE(0); // hardware average function enabled
-		ADC0_SC3 |= ADC_SC3_AVGS(0); // 4 sampled averaged
+		ADC0_SC3 |= ADC_SC3_AVGE(1); // hardware average function enabled
+		ADC0_SC3 |= ADC_SC3_AVGS(3); // 16 sampled averaged
     
     /* Enable Interrupts */
 	  NVIC_SetPriority(ADC0_IRQn, 3); //0,64,128 or 192
@@ -82,60 +83,70 @@ void Init_ADC(void){
 }
 
 void scan_ADC(uint32_t *array){
-	int i = 0;
+	//int i = 0;
 	uint32_t channel = SE0;
 	uint32_t mux = A;
 	char DEBUG[] = "The value is:  ";
 	
-		while(channel <= SE13){
-			ADC0_CFG2 |= ADC_CFG2_MUXSEL(mux);
+		for (int i = 0; i < 9; i++){
+			ADC0_CFG2 = ADC_CFG2_MUXSEL(mux);
 			ADC0->SC1[0] = channel;
 			while(!(ADC0->SC1[0] & ADC_SC1_COCO_MASK)){}
-			array[i] = ADC0->R[0];
+			array[i] = ADC0->R[0] & 0xFFF;
 				//Print_String(DEBUG);
 				print_base10(array[i], 4);
 				Print_Newline();
-			switch (channel){
-				case SE0:
-					channel = SE4ab;
-					mux = A;
-					break;
-				case SE4ab:
-					channel = SE3;
-					mux = A;
-					break;
-				case SE3:
-					channel = SE7a;
-					mux = A;
-					break;
-				case SE7a:
-					channel = SE8;
-					mux = A;
-					break;
-				case SE8:
-					channel = SE9;
-					mux = A;
-					break;
-				case SE9:
-					channel = SE12;
-					mux = A;
-					break;
-				case SE12:
-					channel = SE13;
-					mux = A;
-					break;
-				case SE13:
-					channel = SE4ab;
-					mux = B;
-					break;
-				default:
-					channel = SE0;
-					mux = A;
-					break;
-			}
-			i++;
+				switch (channel){
+					case SE0:
+						channel = SE4ab;
+						mux = A;
+						break;
+					case SE4ab:
+						channel = SE3;
+						mux = A;
+						break;
+					case SE3:
+						channel = SE7a;
+						mux = A;
+						break;
+					case SE7a:
+						channel = SE8;
+						mux = A;
+						break;
+					case SE8:
+						channel = SE9;
+						mux = A;
+						break;
+					case SE9:
+						channel = SE12;
+						mux = A;
+						break;
+					case SE12:
+						channel = SE13;
+						mux = A;
+						break;
+					case SE13:
+						channel = SE4ab;
+						mux = B;
+						break;
+					default:
+						channel = SE0;
+						mux = A;
+						break;
+				}
+			//i++;
 			delayMs(10);
 		}
+	/*	for(int i = 0; i < 9; i++){
+			if(i%3 == 0){
+				Print_Newline();
+			}
+			print_base10(array[i], 4);
+			delayMs(5);
+			while(!(UART2_S1 & 0x80)){}
+			UART2_Transmit(0x20);
+			UART2_Transmit(0x20);
+		}*/
 }
 
 

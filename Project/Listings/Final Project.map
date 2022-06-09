@@ -35,7 +35,6 @@ Section Cross References
     mag_functions.o(i.init_Mag) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     mag_functions.o(i.init_Mag) refers to uart_functions.o(i.print_base10) for print_base10
     mag_functions.o(i.init_Mag) refers to uart_functions.o(i.Print_Newline) for Print_Newline
-    mag_functions.o(i.init_Mag) refers to spi_functions.o(i.SPIsend) for SPIsend
     main_functions.o(i.clear_Count) refers to main_functions.o(.data) for counter
     main_functions.o(i.countToClock) refers to main_functions.o(i.countToTime) for countToTime
     main_functions.o(i.countToClock) refers to main_functions.o(i.decToClock) for decToClock
@@ -75,7 +74,7 @@ Section Cross References
     main_functions.o(i.placeSeperator) refers to dflti.o(.text) for __aeabi_i2d
     main_functions.o(i.placeSeperator) refers to floor.o(i.floor) for floor
     main_functions.o(i.placeSeperator) refers to dfixi.o(.text) for __aeabi_d2iz
-    main_functions.o(i.state_Update) refers to adc_functions.o(i.__ARM_common_switch8) for __ARM_common_switch8
+    main_functions.o(i.state_Update) refers to leds.o(i.control_White_LEDs) for control_White_LEDs
     main_functions.o(i.state_Update) refers to main_functions.o(.data) for present_state
     motor_functions.o(i.go_Backward) refers to motor_functions.o(i.left_wheel_forward) for left_wheel_forward
     motor_functions.o(i.go_Backward) refers to motor_functions.o(i.right_wheel_backward) for right_wheel_backward
@@ -100,12 +99,14 @@ Section Cross References
     pit_functions.o(i.Start_PIT) refers to pit_functions.o(.data) for count
     pit_functions.o(i.Stop_PIT) refers to main_functions.o(i.countToClock) for countToClock
     pit_functions.o(i.Stop_PIT) refers to pit_functions.o(.data) for count
+    spi_functions.o(i.SPIsend) refers to leds.o(i.control_White_LEDs) for control_White_LEDs
+    spi_functions.o(i.SPIsend) refers to lcd_lib_4bit_20b.o(i.delayMs) for delayMs
+    spi_functions.o(i.SPIsendRec) refers to lcd_lib_4bit_20b.o(i.delayMs) for delayMs
     spi_functions.o(i.Test_SPI_Loopback) refers to spi_functions.o(i.SPIsendRec) for SPIsendRec
     spi_functions.o(i.Test_SPI_Loopback) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     switches.o(i.PORTA_IRQHandler) refers to switches.o(i.__NVIC_ClearPendingIRQ) for __NVIC_ClearPendingIRQ
     switches.o(i.PORTA_IRQHandler) refers to lcd_lib_4bit_20b.o(i.delayMs) for delayMs
     switches.o(i.PORTA_IRQHandler) refers to test_functions.o(i.Test_Motors) for Test_Motors
-    switches.o(i.PORTA_IRQHandler) refers to leds.o(i.control_White_LEDs) for control_White_LEDs
     switches.o(i.PORTA_IRQHandler) refers to test_functions.o(i.Test_ADC) for Test_ADC
     switches.o(i.PORTA_IRQHandler) refers to test_functions.o(i.Test_Mag) for Test_Mag
     switches.o(i.PORTA_IRQHandler) refers to test_functions.o(i.Test_UART) for Test_UART
@@ -136,12 +137,14 @@ Section Cross References
     main.o(i.main) refers to mag_functions.o(i.init_Mag) for init_Mag
     main.o(i.main) refers to switches.o(i.init_switch) for init_switch
     main.o(i.main) refers to pit_functions.o(i.Init_PIT) for Init_PIT
+    main.o(i.main) refers to usound_functions.o(i.init_ultrasound) for init_ultrasound
     test_functions.o(i.Test_ADC) refers to adc_functions.o(i.scan_ADC) for scan_ADC
-    test_functions.o(i.Test_ADC) refers to uart_functions.o(i.print_base10) for print_base10
     test_functions.o(i.Test_Mag) refers to spi_functions.o(i.SPIsendRec) for SPIsendRec
     test_functions.o(i.Test_Mag) refers to leds.o(i.control_RGB_LEDs) for control_RGB_LEDs
     test_functions.o(i.Test_Mag) refers to uart_functions.o(i.print_base10) for print_base10
     test_functions.o(i.Test_Mag) refers to uart_functions.o(i.Print_Newline) for Print_Newline
+    test_functions.o(i.Test_Mag) refers to mag_functions.o(i.get_XData) for get_XData
+    test_functions.o(i.Test_Mag) refers to leds.o(i.control_White_LEDs) for control_White_LEDs
     test_functions.o(i.Test_Mag) refers to lcd_lib_4bit_20b.o(i.delayMs) for delayMs
     test_functions.o(i.Test_Motors) refers to motor_functions.o(i.go_Forward) for go_Forward
     test_functions.o(i.Test_Motors) refers to motor_functions.o(i.go_Backward) for go_Backward
@@ -324,8 +327,7 @@ Removing Unused input sections from the image.
     Removing leds.o(.revsh_text), (4 bytes).
     Removing mag_functions.o(.rev16_text), (4 bytes).
     Removing mag_functions.o(.revsh_text), (4 bytes).
-    Removing mag_functions.o(i.get_Mag_Status), (16 bytes).
-    Removing mag_functions.o(i.get_XData), (30 bytes).
+    Removing mag_functions.o(i.get_Mag_Status), (18 bytes).
     Removing mag_functions.o(i.get_YData), (30 bytes).
     Removing mag_functions.o(i.get_ZData), (30 bytes).
     Removing main_functions.o(.rev16_text), (4 bytes).
@@ -341,7 +343,7 @@ Removing Unused input sections from the image.
     Removing main_functions.o(i.get_Count), (12 bytes).
     Removing main_functions.o(i.inc_Count), (16 bytes).
     Removing main_functions.o(i.placeSeperator), (84 bytes).
-    Removing main_functions.o(i.state_Update), (120 bytes).
+    Removing main_functions.o(i.state_Update), (144 bytes).
     Removing main_functions.o(.bss), (36 bytes).
     Removing main_functions.o(.constdata), (20 bytes).
     Removing main_functions.o(.data), (20 bytes).
@@ -355,7 +357,8 @@ Removing Unused input sections from the image.
     Removing pit_functions.o(.data), (12 bytes).
     Removing spi_functions.o(.rev16_text), (4 bytes).
     Removing spi_functions.o(.revsh_text), (4 bytes).
-    Removing spi_functions.o(i.Test_SPI_Loopback), (50 bytes).
+    Removing spi_functions.o(i.SPIsend), (100 bytes).
+    Removing spi_functions.o(i.Test_SPI_Loopback), (52 bytes).
     Removing switches.o(.rev16_text), (4 bytes).
     Removing switches.o(.revsh_text), (4 bytes).
     Removing switches.o(.data), (4 bytes).
@@ -368,7 +371,6 @@ Removing Unused input sections from the image.
     Removing usound_functions.o(.rev16_text), (4 bytes).
     Removing usound_functions.o(.revsh_text), (4 bytes).
     Removing usound_functions.o(i.delayMicros), (36 bytes).
-    Removing usound_functions.o(i.init_ultrasound), (68 bytes).
     Removing main.o(.rev16_text), (4 bytes).
     Removing main.o(.revsh_text), (4 bytes).
     Removing test_functions.o(.rev16_text), (4 bytes).
@@ -385,7 +387,7 @@ Removing Unused input sections from the image.
     Removing system_mkl25z4.o(i.SystemCoreClockUpdate), (400 bytes).
     Removing system_mkl25z4.o(.data), (4 bytes).
 
-81 unused section(s) (total 2740 bytes) removed from the image.
+80 unused section(s) (total 2770 bytes) removed from the image.
 
 ==============================================================================
 
@@ -398,57 +400,57 @@ Image Symbol Table
     RESET                                    0x00000000   Section      192  startup_mkl25z4.o(RESET)
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
     ../clib/angel/scatterp.s                 0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
-    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
+    ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/cfplib/cmpret.c                 0x00000000   Number         0  cmpret.o ABSOLUTE
@@ -556,59 +558,60 @@ Image Symbol Table
     i.PIT_IRQHandler                         0x000003d0   Section        0  pit_functions.o(i.PIT_IRQHandler)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
     i.Init_ADC                               0x00000410   Section        0  adc_functions.o(i.Init_ADC)
-    i.PORTA_IRQHandler                       0x000005d0   Section        0  switches.o(i.PORTA_IRQHandler)
-    i.Print_Newline                          0x000006f4   Section        0  uart_functions.o(i.Print_Newline)
-    i.Print_String                           0x00000704   Section        0  uart_functions.o(i.Print_String)
-    i.Q_Init                                 0x00000748   Section        0  queue_functions.o(i.Q_Init)
-    i.SPIsend                                0x00000768   Section        0  spi_functions.o(i.SPIsend)
-    i.SPIsendRec                             0x0000078c   Section        0  spi_functions.o(i.SPIsendRec)
-    i.SystemInit                             0x000007f4   Section        0  system_mkl25z4.o(i.SystemInit)
-    i.TPM0_IRQHandler                        0x0000092c   Section        0  tpm_functions.o(i.TPM0_IRQHandler)
-    i.Test_ADC                               0x0000093a   Section        0  test_functions.o(i.Test_ADC)
-    i.Test_Mag                               0x00000960   Section        0  test_functions.o(i.Test_Mag)
-    i.Test_Motors                            0x000009b4   Section        0  test_functions.o(i.Test_Motors)
-    i.Test_UART                              0x000009e8   Section        0  test_functions.o(i.Test_UART)
-    i.Test_USound                            0x00000a10   Section        0  test_functions.o(i.Test_USound)
-    i.UART2_IRQHandler                       0x00000a20   Section        0  uart_functions.o(i.UART2_IRQHandler)
-    i.UART2_Transmit                         0x00000a3c   Section        0  uart_functions.o(i.UART2_Transmit)
-    i.__ARM_common_switch8                   0x00000a48   Section        0  adc_functions.o(i.__ARM_common_switch8)
-    i.__NVIC_ClearPendingIRQ                 0x00000a64   Section        0  adc_functions.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00000a65   Thumb Code    18  adc_functions.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_ClearPendingIRQ                 0x00000a7c   Section        0  pit_functions.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00000a7d   Thumb Code    18  pit_functions.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_ClearPendingIRQ                 0x00000a94   Section        0  switches.o(i.__NVIC_ClearPendingIRQ)
-    __NVIC_ClearPendingIRQ                   0x00000a95   Thumb Code    18  switches.o(i.__NVIC_ClearPendingIRQ)
-    i.__NVIC_SetPriority                     0x00000aac   Section        0  adc_functions.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00000aad   Thumb Code   110  adc_functions.o(i.__NVIC_SetPriority)
-    i.__NVIC_SetPriority                     0x00000b24   Section        0  pit_functions.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00000b25   Thumb Code   110  pit_functions.o(i.__NVIC_SetPriority)
-    i.__NVIC_SetPriority                     0x00000b9c   Section        0  switches.o(i.__NVIC_SetPriority)
-    __NVIC_SetPriority                       0x00000b9d   Thumb Code   110  switches.o(i.__NVIC_SetPriority)
-    i.control_RGB_LEDs                       0x00000c14   Section        0  leds.o(i.control_RGB_LEDs)
-    i.control_White_LEDs                     0x00000c60   Section        0  leds.o(i.control_White_LEDs)
-    i.delayMs                                0x00000d38   Section        0  lcd_lib_4bit_20b.o(i.delayMs)
-    i.go_Backward                            0x00000d52   Section        0  motor_functions.o(i.go_Backward)
-    i.go_Forward                             0x00000d5e   Section        0  motor_functions.o(i.go_Forward)
-    i.init_LEDs                              0x00000d6c   Section        0  leds.o(i.init_LEDs)
-    i.init_Mag                               0x00000f1c   Section        0  mag_functions.o(i.init_Mag)
-    i.init_SPI1                              0x00000ffc   Section        0  spi_functions.o(i.init_SPI1)
-    i.init_TPM                               0x000010ac   Section        0  tpm_functions.o(i.init_TPM)
-    i.init_UART2                             0x00001208   Section        0  uart_functions.o(i.init_UART2)
-    i.init_switch                            0x00001278   Section        0  switches.o(i.init_switch)
-    i.left_wheel_backward                    0x00001348   Section        0  motor_functions.o(i.left_wheel_backward)
-    i.left_wheel_forward                     0x00001364   Section        0  motor_functions.o(i.left_wheel_forward)
-    i.left_wheel_stop                        0x00001380   Section        0  motor_functions.o(i.left_wheel_stop)
-    i.main                                   0x0000139c   Section        0  main.o(i.main)
-    i.measure_distance                       0x000013c8   Section        0  usound_functions.o(i.measure_distance)
-    i.print_base10                           0x00001438   Section        0  uart_functions.o(i.print_base10)
-    i.right_wheel_backward                   0x00001498   Section        0  motor_functions.o(i.right_wheel_backward)
-    i.right_wheel_forward                    0x000014b4   Section        0  motor_functions.o(i.right_wheel_forward)
-    i.right_wheel_stop                       0x000014d0   Section        0  motor_functions.o(i.right_wheel_stop)
-    i.scan_ADC                               0x000014ec   Section        0  adc_functions.o(i.scan_ADC)
-    i.stop                                   0x000015b4   Section        0  motor_functions.o(i.stop)
-    i.toggle_RGB_LEDs                        0x000015c0   Section        0  leds.o(i.toggle_RGB_LEDs)
-    i.turn_Left                              0x000015ec   Section        0  motor_functions.o(i.turn_Left)
-    i.turn_Right                             0x000015f8   Section        0  motor_functions.o(i.turn_Right)
+    i.PORTA_IRQHandler                       0x000005dc   Section        0  switches.o(i.PORTA_IRQHandler)
+    i.Print_Newline                          0x000006c0   Section        0  uart_functions.o(i.Print_Newline)
+    i.Print_String                           0x000006d8   Section        0  uart_functions.o(i.Print_String)
+    i.Q_Init                                 0x0000071c   Section        0  queue_functions.o(i.Q_Init)
+    i.SPIsendRec                             0x0000073c   Section        0  spi_functions.o(i.SPIsendRec)
+    i.SystemInit                             0x000007b0   Section        0  system_mkl25z4.o(i.SystemInit)
+    i.TPM0_IRQHandler                        0x000008e8   Section        0  tpm_functions.o(i.TPM0_IRQHandler)
+    i.Test_ADC                               0x000008f6   Section        0  test_functions.o(i.Test_ADC)
+    i.Test_Mag                               0x00000904   Section        0  test_functions.o(i.Test_Mag)
+    i.Test_Motors                            0x00000962   Section        0  test_functions.o(i.Test_Motors)
+    i.Test_UART                              0x00000994   Section        0  test_functions.o(i.Test_UART)
+    i.Test_USound                            0x000009bc   Section        0  test_functions.o(i.Test_USound)
+    i.UART2_IRQHandler                       0x000009cc   Section        0  uart_functions.o(i.UART2_IRQHandler)
+    i.UART2_Transmit                         0x000009e8   Section        0  uart_functions.o(i.UART2_Transmit)
+    i.__ARM_common_switch8                   0x000009f4   Section        0  adc_functions.o(i.__ARM_common_switch8)
+    i.__NVIC_ClearPendingIRQ                 0x00000a10   Section        0  adc_functions.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00000a11   Thumb Code    18  adc_functions.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_ClearPendingIRQ                 0x00000a28   Section        0  pit_functions.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00000a29   Thumb Code    18  pit_functions.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_ClearPendingIRQ                 0x00000a40   Section        0  switches.o(i.__NVIC_ClearPendingIRQ)
+    __NVIC_ClearPendingIRQ                   0x00000a41   Thumb Code    18  switches.o(i.__NVIC_ClearPendingIRQ)
+    i.__NVIC_SetPriority                     0x00000a58   Section        0  adc_functions.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000a59   Thumb Code   110  adc_functions.o(i.__NVIC_SetPriority)
+    i.__NVIC_SetPriority                     0x00000ad0   Section        0  pit_functions.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000ad1   Thumb Code   110  pit_functions.o(i.__NVIC_SetPriority)
+    i.__NVIC_SetPriority                     0x00000b48   Section        0  switches.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x00000b49   Thumb Code   110  switches.o(i.__NVIC_SetPriority)
+    i.control_RGB_LEDs                       0x00000bc0   Section        0  leds.o(i.control_RGB_LEDs)
+    i.control_White_LEDs                     0x00000c0c   Section        0  leds.o(i.control_White_LEDs)
+    i.delayMs                                0x00000ce4   Section        0  lcd_lib_4bit_20b.o(i.delayMs)
+    i.get_XData                              0x00000cfe   Section        0  mag_functions.o(i.get_XData)
+    i.go_Backward                            0x00000d1c   Section        0  motor_functions.o(i.go_Backward)
+    i.go_Forward                             0x00000d28   Section        0  motor_functions.o(i.go_Forward)
+    i.init_LEDs                              0x00000d34   Section        0  leds.o(i.init_LEDs)
+    i.init_Mag                               0x00000ee4   Section        0  mag_functions.o(i.init_Mag)
+    i.init_SPI1                              0x00000fc4   Section        0  spi_functions.o(i.init_SPI1)
+    i.init_TPM                               0x00001074   Section        0  tpm_functions.o(i.init_TPM)
+    i.init_UART2                             0x000011d0   Section        0  uart_functions.o(i.init_UART2)
+    i.init_switch                            0x00001240   Section        0  switches.o(i.init_switch)
+    i.init_ultrasound                        0x00001310   Section        0  usound_functions.o(i.init_ultrasound)
+    i.left_wheel_backward                    0x00001354   Section        0  motor_functions.o(i.left_wheel_backward)
+    i.left_wheel_forward                     0x00001370   Section        0  motor_functions.o(i.left_wheel_forward)
+    i.left_wheel_stop                        0x0000138c   Section        0  motor_functions.o(i.left_wheel_stop)
+    i.main                                   0x000013a8   Section        0  main.o(i.main)
+    i.measure_distance                       0x000013e8   Section        0  usound_functions.o(i.measure_distance)
+    i.print_base10                           0x00001474   Section        0  uart_functions.o(i.print_base10)
+    i.right_wheel_backward                   0x000014d4   Section        0  motor_functions.o(i.right_wheel_backward)
+    i.right_wheel_forward                    0x000014f0   Section        0  motor_functions.o(i.right_wheel_forward)
+    i.right_wheel_stop                       0x0000150c   Section        0  motor_functions.o(i.right_wheel_stop)
+    i.scan_ADC                               0x00001528   Section        0  adc_functions.o(i.scan_ADC)
+    i.stop                                   0x000015f0   Section        0  motor_functions.o(i.stop)
+    i.toggle_RGB_LEDs                        0x000015fc   Section        0  leds.o(i.toggle_RGB_LEDs)
+    i.turn_Left                              0x00001628   Section        0  motor_functions.o(i.turn_Left)
+    i.turn_Right                             0x00001634   Section        0  motor_functions.o(i.turn_Right)
     .bss                                     0x1ffff000   Section      268  uart_functions.o(.bss)
     .bss                                     0x1ffff10c   Section       96  libspace.o(.bss)
     HEAP                                     0x1ffff170   Section        0  startup_mkl25z4.o(HEAP)
@@ -755,50 +758,51 @@ Image Symbol Table
     __semihosting_library_function           0x0000034f   Thumb Code     0  indicate_semi.o(.text)
     Init_PIT                                 0x00000351   Thumb Code   112  pit_functions.o(i.Init_PIT)
     PIT_IRQHandler                           0x000003d1   Thumb Code    40  pit_functions.o(i.PIT_IRQHandler)
-    Init_ADC                                 0x00000411   Thumb Code   426  adc_functions.o(i.Init_ADC)
-    PORTA_IRQHandler                         0x000005d1   Thumb Code   284  switches.o(i.PORTA_IRQHandler)
-    Print_Newline                            0x000006f5   Thumb Code    16  uart_functions.o(i.Print_Newline)
-    Print_String                             0x00000705   Thumb Code    62  uart_functions.o(i.Print_String)
-    Q_Init                                   0x00000749   Thumb Code    32  queue_functions.o(i.Q_Init)
-    SPIsend                                  0x00000769   Thumb Code    32  spi_functions.o(i.SPIsend)
-    SPIsendRec                               0x0000078d   Thumb Code   100  spi_functions.o(i.SPIsendRec)
-    SystemInit                               0x000007f5   Thumb Code   266  system_mkl25z4.o(i.SystemInit)
-    TPM0_IRQHandler                          0x0000092d   Thumb Code    14  tpm_functions.o(i.TPM0_IRQHandler)
-    Test_ADC                                 0x0000093b   Thumb Code    36  test_functions.o(i.Test_ADC)
-    Test_Mag                                 0x00000961   Thumb Code    80  test_functions.o(i.Test_Mag)
-    Test_Motors                              0x000009b5   Thumb Code    50  test_functions.o(i.Test_Motors)
-    Test_UART                                0x000009e9   Thumb Code    24  test_functions.o(i.Test_UART)
-    Test_USound                              0x00000a11   Thumb Code    16  test_functions.o(i.Test_USound)
-    UART2_IRQHandler                         0x00000a21   Thumb Code    22  uart_functions.o(i.UART2_IRQHandler)
-    UART2_Transmit                           0x00000a3d   Thumb Code     6  uart_functions.o(i.UART2_Transmit)
-    __ARM_common_switch8                     0x00000a49   Thumb Code    28  adc_functions.o(i.__ARM_common_switch8)
-    control_RGB_LEDs                         0x00000c15   Thumb Code    70  leds.o(i.control_RGB_LEDs)
-    control_White_LEDs                       0x00000c61   Thumb Code   210  leds.o(i.control_White_LEDs)
-    delayMs                                  0x00000d39   Thumb Code    26  lcd_lib_4bit_20b.o(i.delayMs)
-    go_Backward                              0x00000d53   Thumb Code    12  motor_functions.o(i.go_Backward)
-    go_Forward                               0x00000d5f   Thumb Code    12  motor_functions.o(i.go_Forward)
-    init_LEDs                                0x00000d6d   Thumb Code   408  leds.o(i.init_LEDs)
-    init_Mag                                 0x00000f1d   Thumb Code   206  mag_functions.o(i.init_Mag)
-    init_SPI1                                0x00000ffd   Thumb Code   164  spi_functions.o(i.init_SPI1)
-    init_TPM                                 0x000010ad   Thumb Code   314  tpm_functions.o(i.init_TPM)
-    init_UART2                               0x00001209   Thumb Code    94  uart_functions.o(i.init_UART2)
-    init_switch                              0x00001279   Thumb Code   186  switches.o(i.init_switch)
-    left_wheel_backward                      0x00001349   Thumb Code    20  motor_functions.o(i.left_wheel_backward)
-    left_wheel_forward                       0x00001365   Thumb Code    22  motor_functions.o(i.left_wheel_forward)
-    left_wheel_stop                          0x00001381   Thumb Code    20  motor_functions.o(i.left_wheel_stop)
-    main                                     0x0000139d   Thumb Code    40  main.o(i.main)
-    measure_distance                         0x000013c9   Thumb Code   102  usound_functions.o(i.measure_distance)
-    print_base10                             0x00001439   Thumb Code    90  uart_functions.o(i.print_base10)
-    right_wheel_backward                     0x00001499   Thumb Code    20  motor_functions.o(i.right_wheel_backward)
-    right_wheel_forward                      0x000014b5   Thumb Code    22  motor_functions.o(i.right_wheel_forward)
-    right_wheel_stop                         0x000014d1   Thumb Code    20  motor_functions.o(i.right_wheel_stop)
-    scan_ADC                                 0x000014ed   Thumb Code   180  adc_functions.o(i.scan_ADC)
-    stop                                     0x000015b5   Thumb Code    12  motor_functions.o(i.stop)
-    toggle_RGB_LEDs                          0x000015c1   Thumb Code    40  leds.o(i.toggle_RGB_LEDs)
-    turn_Left                                0x000015ed   Thumb Code    12  motor_functions.o(i.turn_Left)
-    turn_Right                               0x000015f9   Thumb Code    12  motor_functions.o(i.turn_Right)
-    Region$$Table$$Base                      0x00001604   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001614   Number         0  anon$$obj.o(Region$$Table)
+    Init_ADC                                 0x00000411   Thumb Code   438  adc_functions.o(i.Init_ADC)
+    PORTA_IRQHandler                         0x000005dd   Thumb Code   218  switches.o(i.PORTA_IRQHandler)
+    Print_Newline                            0x000006c1   Thumb Code    22  uart_functions.o(i.Print_Newline)
+    Print_String                             0x000006d9   Thumb Code    62  uart_functions.o(i.Print_String)
+    Q_Init                                   0x0000071d   Thumb Code    32  queue_functions.o(i.Q_Init)
+    SPIsendRec                               0x0000073d   Thumb Code   108  spi_functions.o(i.SPIsendRec)
+    SystemInit                               0x000007b1   Thumb Code   266  system_mkl25z4.o(i.SystemInit)
+    TPM0_IRQHandler                          0x000008e9   Thumb Code    14  tpm_functions.o(i.TPM0_IRQHandler)
+    Test_ADC                                 0x000008f7   Thumb Code    14  test_functions.o(i.Test_ADC)
+    Test_Mag                                 0x00000905   Thumb Code    94  test_functions.o(i.Test_Mag)
+    Test_Motors                              0x00000963   Thumb Code    50  test_functions.o(i.Test_Motors)
+    Test_UART                                0x00000995   Thumb Code    24  test_functions.o(i.Test_UART)
+    Test_USound                              0x000009bd   Thumb Code    16  test_functions.o(i.Test_USound)
+    UART2_IRQHandler                         0x000009cd   Thumb Code    22  uart_functions.o(i.UART2_IRQHandler)
+    UART2_Transmit                           0x000009e9   Thumb Code     6  uart_functions.o(i.UART2_Transmit)
+    __ARM_common_switch8                     0x000009f5   Thumb Code    28  adc_functions.o(i.__ARM_common_switch8)
+    control_RGB_LEDs                         0x00000bc1   Thumb Code    70  leds.o(i.control_RGB_LEDs)
+    control_White_LEDs                       0x00000c0d   Thumb Code   210  leds.o(i.control_White_LEDs)
+    delayMs                                  0x00000ce5   Thumb Code    26  lcd_lib_4bit_20b.o(i.delayMs)
+    get_XData                                0x00000cff   Thumb Code    30  mag_functions.o(i.get_XData)
+    go_Backward                              0x00000d1d   Thumb Code    12  motor_functions.o(i.go_Backward)
+    go_Forward                               0x00000d29   Thumb Code    12  motor_functions.o(i.go_Forward)
+    init_LEDs                                0x00000d35   Thumb Code   408  leds.o(i.init_LEDs)
+    init_Mag                                 0x00000ee5   Thumb Code   212  mag_functions.o(i.init_Mag)
+    init_SPI1                                0x00000fc5   Thumb Code   164  spi_functions.o(i.init_SPI1)
+    init_TPM                                 0x00001075   Thumb Code   314  tpm_functions.o(i.init_TPM)
+    init_UART2                               0x000011d1   Thumb Code    94  uart_functions.o(i.init_UART2)
+    init_switch                              0x00001241   Thumb Code   186  switches.o(i.init_switch)
+    init_ultrasound                          0x00001311   Thumb Code    56  usound_functions.o(i.init_ultrasound)
+    left_wheel_backward                      0x00001355   Thumb Code    20  motor_functions.o(i.left_wheel_backward)
+    left_wheel_forward                       0x00001371   Thumb Code    22  motor_functions.o(i.left_wheel_forward)
+    left_wheel_stop                          0x0000138d   Thumb Code    20  motor_functions.o(i.left_wheel_stop)
+    main                                     0x000013a9   Thumb Code    56  main.o(i.main)
+    measure_distance                         0x000013e9   Thumb Code   130  usound_functions.o(i.measure_distance)
+    print_base10                             0x00001475   Thumb Code    90  uart_functions.o(i.print_base10)
+    right_wheel_backward                     0x000014d5   Thumb Code    20  motor_functions.o(i.right_wheel_backward)
+    right_wheel_forward                      0x000014f1   Thumb Code    22  motor_functions.o(i.right_wheel_forward)
+    right_wheel_stop                         0x0000150d   Thumb Code    20  motor_functions.o(i.right_wheel_stop)
+    scan_ADC                                 0x00001529   Thumb Code   180  adc_functions.o(i.scan_ADC)
+    stop                                     0x000015f1   Thumb Code    12  motor_functions.o(i.stop)
+    toggle_RGB_LEDs                          0x000015fd   Thumb Code    40  leds.o(i.toggle_RGB_LEDs)
+    turn_Left                                0x00001629   Thumb Code    12  motor_functions.o(i.turn_Left)
+    turn_Right                               0x00001635   Thumb Code    12  motor_functions.o(i.turn_Right)
+    Region$$Table$$Base                      0x00001640   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001650   Number         0  anon$$obj.o(Region$$Table)
     q                                        0x1ffff000   Data         268  uart_functions.o(.bss)
     __libspace_start                         0x1ffff10c   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1ffff16c   Data           0  libspace.o(.bss)
@@ -811,141 +815,140 @@ Memory Map of the image
 
   Image Entry point : 0x00000149
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00001614, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001650, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001614, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001650, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO          930    RESET               startup_mkl25z4.o
-    0x000000c0   0x000000c0   0x00000008   Code   RO          982  * !!!main             c_p.l(__main.o)
-    0x000000c8   0x000000c8   0x0000003c   Code   RO         1174    !!!scatter          c_p.l(__scatter.o)
-    0x00000104   0x00000104   0x0000001c   Code   RO         1176    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x00000120   0x00000120   0x00000002   Code   RO         1037    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1055    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1057    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1060    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1062    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1064    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1067    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1069    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1071    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1073    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1075    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1077    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1079    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1081    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1083    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1085    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1087    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1091    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1093    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1095    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000000   Code   RO         1097    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x00000122   0x00000122   0x00000002   Code   RO         1098    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
-    0x00000124   0x00000124   0x00000002   Code   RO         1131    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1157    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1159    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1162    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1165    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1167    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000000   Code   RO         1170    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x00000126   0x00000126   0x00000002   Code   RO         1171    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x00000128   0x00000128   0x00000000   Code   RO          994    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x00000128   0x00000128   0x00000000   Code   RO         1005    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x00000128   0x00000128   0x00000006   Code   RO         1017    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0000012e   0x0000012e   0x00000000   Code   RO         1007    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0000012e   0x0000012e   0x00000004   Code   RO         1008    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x00000132   0x00000132   0x00000000   Code   RO         1010    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x00000132   0x00000132   0x00000008   Code   RO         1011    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x0000013a   0x0000013a   0x00000002   Code   RO         1046    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x0000013c   0x0000013c   0x00000000   Code   RO         1104    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x0000013c   0x0000013c   0x00000004   Code   RO         1105    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x00000140   0x00000140   0x00000006   Code   RO         1106    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO          903    RESET               startup_mkl25z4.o
+    0x000000c0   0x000000c0   0x00000008   Code   RO          955  * !!!main             c_p.l(__main.o)
+    0x000000c8   0x000000c8   0x0000003c   Code   RO         1147    !!!scatter          c_p.l(__scatter.o)
+    0x00000104   0x00000104   0x0000001c   Code   RO         1149    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x00000120   0x00000120   0x00000002   Code   RO         1010    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1028    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1030    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1033    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1035    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1037    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1040    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1042    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1044    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1046    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1048    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1050    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1052    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1054    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1056    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1058    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1060    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1064    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1066    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1068    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000000   Code   RO         1070    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x00000122   0x00000122   0x00000002   Code   RO         1071    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
+    0x00000124   0x00000124   0x00000002   Code   RO         1104    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1130    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1132    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1135    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1138    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1140    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000000   Code   RO         1143    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x00000126   0x00000126   0x00000002   Code   RO         1144    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x00000128   0x00000128   0x00000000   Code   RO          967    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x00000128   0x00000128   0x00000000   Code   RO          978    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x00000128   0x00000128   0x00000006   Code   RO          990    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0000012e   0x0000012e   0x00000000   Code   RO          980    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0000012e   0x0000012e   0x00000004   Code   RO          981    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x00000132   0x00000132   0x00000000   Code   RO          983    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x00000132   0x00000132   0x00000008   Code   RO          984    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x0000013a   0x0000013a   0x00000002   Code   RO         1019    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x0000013c   0x0000013c   0x00000000   Code   RO         1077    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x0000013c   0x0000013c   0x00000004   Code   RO         1078    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x00000140   0x00000140   0x00000006   Code   RO         1079    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x00000146   0x00000146   0x00000002   PAD
-    0x00000148   0x00000148   0x00000040   Code   RO          932  * .text               startup_mkl25z4.o
-    0x00000188   0x00000188   0x0000015a   Code   RO          976    .text               c_p.l(aeabi_sdiv.o)
-    0x000002e2   0x000002e2   0x00000006   Code   RO          980    .text               c_p.l(heapauxi.o)
-    0x000002e8   0x000002e8   0x0000003e   Code   RO         1023    .text               c_p.l(sys_stackheap_outer.o)
-    0x00000326   0x00000326   0x00000010   Code   RO         1026    .text               c_p.l(exit.o)
+    0x00000148   0x00000148   0x00000040   Code   RO          905  * .text               startup_mkl25z4.o
+    0x00000188   0x00000188   0x0000015a   Code   RO          949    .text               c_p.l(aeabi_sdiv.o)
+    0x000002e2   0x000002e2   0x00000006   Code   RO          953    .text               c_p.l(heapauxi.o)
+    0x000002e8   0x000002e8   0x0000003e   Code   RO          996    .text               c_p.l(sys_stackheap_outer.o)
+    0x00000326   0x00000326   0x00000010   Code   RO          999    .text               c_p.l(exit.o)
     0x00000336   0x00000336   0x00000002   PAD
-    0x00000338   0x00000338   0x00000008   Code   RO         1042    .text               c_p.l(libspace.o)
-    0x00000340   0x00000340   0x0000000c   Code   RO         1101    .text               c_p.l(sys_exit.o)
-    0x0000034c   0x0000034c   0x00000002   Code   RO         1120    .text               c_p.l(use_no_semi.o)
-    0x0000034e   0x0000034e   0x00000000   Code   RO         1122    .text               c_p.l(indicate_semi.o)
+    0x00000338   0x00000338   0x00000008   Code   RO         1015    .text               c_p.l(libspace.o)
+    0x00000340   0x00000340   0x0000000c   Code   RO         1074    .text               c_p.l(sys_exit.o)
+    0x0000034c   0x0000034c   0x00000002   Code   RO         1093    .text               c_p.l(use_no_semi.o)
+    0x0000034e   0x0000034e   0x00000000   Code   RO         1095    .text               c_p.l(indicate_semi.o)
     0x0000034e   0x0000034e   0x00000002   PAD
-    0x00000350   0x00000350   0x00000080   Code   RO          497    i.Init_PIT          pit_functions.o
-    0x000003d0   0x000003d0   0x0000002c   Code   RO          498    i.PIT_IRQHandler    pit_functions.o
+    0x00000350   0x00000350   0x00000080   Code   RO          485    i.Init_PIT          pit_functions.o
+    0x000003d0   0x000003d0   0x0000002c   Code   RO          486    i.PIT_IRQHandler    pit_functions.o
     0x000003fc   0x000003fc   0x00000004   PAD
-    0x00000400   0x00000400   0x00000010   Code   RO          931    .ARM.__at_0x400     startup_mkl25z4.o
-    0x00000410   0x00000410   0x000001c0   Code   RO            4    i.Init_ADC          adc_functions.o
-    0x000005d0   0x000005d0   0x00000124   Code   RO          593    i.PORTA_IRQHandler  switches.o
-    0x000006f4   0x000006f4   0x00000010   Code   RO          669    i.Print_Newline     uart_functions.o
-    0x00000704   0x00000704   0x00000044   Code   RO          670    i.Print_String      uart_functions.o
-    0x00000748   0x00000748   0x00000020   Code   RO          881    i.Q_Init            queue_functions.o
-    0x00000768   0x00000768   0x00000024   Code   RO          555    i.SPIsend           spi_functions.o
-    0x0000078c   0x0000078c   0x00000068   Code   RO          556    i.SPIsendRec        spi_functions.o
-    0x000007f4   0x000007f4   0x00000138   Code   RO          941    i.SystemInit        system_mkl25z4.o
-    0x0000092c   0x0000092c   0x0000000e   Code   RO          643    i.TPM0_IRQHandler   tpm_functions.o
-    0x0000093a   0x0000093a   0x00000024   Code   RO          817    i.Test_ADC          test_functions.o
-    0x0000095e   0x0000095e   0x00000002   PAD
-    0x00000960   0x00000960   0x00000054   Code   RO          818    i.Test_Mag          test_functions.o
-    0x000009b4   0x000009b4   0x00000032   Code   RO          819    i.Test_Motors       test_functions.o
-    0x000009e6   0x000009e6   0x00000002   PAD
-    0x000009e8   0x000009e8   0x00000028   Code   RO          820    i.Test_UART         test_functions.o
-    0x00000a10   0x00000a10   0x00000010   Code   RO          821    i.Test_USound       test_functions.o
-    0x00000a20   0x00000a20   0x0000001c   Code   RO          672    i.UART2_IRQHandler  uart_functions.o
-    0x00000a3c   0x00000a3c   0x0000000c   Code   RO          673    i.UART2_Transmit    uart_functions.o
-    0x00000a48   0x00000a48   0x0000001c   Code   RO           41    i.__ARM_common_switch8  adc_functions.o
-    0x00000a64   0x00000a64   0x00000018   Code   RO            5    i.__NVIC_ClearPendingIRQ  adc_functions.o
-    0x00000a7c   0x00000a7c   0x00000018   Code   RO          501    i.__NVIC_ClearPendingIRQ  pit_functions.o
-    0x00000a94   0x00000a94   0x00000018   Code   RO          594    i.__NVIC_ClearPendingIRQ  switches.o
-    0x00000aac   0x00000aac   0x00000078   Code   RO            6    i.__NVIC_SetPriority  adc_functions.o
-    0x00000b24   0x00000b24   0x00000078   Code   RO          502    i.__NVIC_SetPriority  pit_functions.o
-    0x00000b9c   0x00000b9c   0x00000078   Code   RO          595    i.__NVIC_SetPriority  switches.o
-    0x00000c14   0x00000c14   0x0000004c   Code   RO          183    i.control_RGB_LEDs  leds.o
-    0x00000c60   0x00000c60   0x000000d8   Code   RO          184    i.control_White_LEDs  leds.o
-    0x00000d38   0x00000d38   0x0000001a   Code   RO          138    i.delayMs           lcd_lib_4bit_20b.o
-    0x00000d52   0x00000d52   0x0000000c   Code   RO          404    i.go_Backward       motor_functions.o
-    0x00000d5e   0x00000d5e   0x0000000c   Code   RO          405    i.go_Forward        motor_functions.o
-    0x00000d6a   0x00000d6a   0x00000002   PAD
-    0x00000d6c   0x00000d6c   0x000001b0   Code   RO          185    i.init_LEDs         leds.o
-    0x00000f1c   0x00000f1c   0x000000e0   Code   RO          237    i.init_Mag          mag_functions.o
-    0x00000ffc   0x00000ffc   0x000000b0   Code   RO          558    i.init_SPI1         spi_functions.o
-    0x000010ac   0x000010ac   0x0000015c   Code   RO          644    i.init_TPM          tpm_functions.o
-    0x00001208   0x00001208   0x00000070   Code   RO          674    i.init_UART2        uart_functions.o
-    0x00001278   0x00001278   0x000000d0   Code   RO          596    i.init_switch       switches.o
-    0x00001348   0x00001348   0x0000001c   Code   RO          406    i.left_wheel_backward  motor_functions.o
-    0x00001364   0x00001364   0x0000001c   Code   RO          407    i.left_wheel_forward  motor_functions.o
-    0x00001380   0x00001380   0x0000001c   Code   RO          408    i.left_wheel_stop   motor_functions.o
-    0x0000139c   0x0000139c   0x0000002c   Code   RO          774    i.main              main.o
-    0x000013c8   0x000013c8   0x00000070   Code   RO          741    i.measure_distance  usound_functions.o
-    0x00001438   0x00001438   0x00000060   Code   RO          675    i.print_base10      uart_functions.o
-    0x00001498   0x00001498   0x0000001c   Code   RO          409    i.right_wheel_backward  motor_functions.o
-    0x000014b4   0x000014b4   0x0000001c   Code   RO          410    i.right_wheel_forward  motor_functions.o
-    0x000014d0   0x000014d0   0x0000001c   Code   RO          411    i.right_wheel_stop  motor_functions.o
-    0x000014ec   0x000014ec   0x000000c8   Code   RO            7    i.scan_ADC          adc_functions.o
-    0x000015b4   0x000015b4   0x0000000c   Code   RO          412    i.stop              motor_functions.o
-    0x000015c0   0x000015c0   0x0000002c   Code   RO          186    i.toggle_RGB_LEDs   leds.o
-    0x000015ec   0x000015ec   0x0000000c   Code   RO          413    i.turn_Left         motor_functions.o
-    0x000015f8   0x000015f8   0x0000000c   Code   RO          414    i.turn_Right        motor_functions.o
-    0x00001604   0x00001604   0x00000010   Data   RO         1172    Region$$Table       anon$$obj.o
+    0x00000400   0x00000400   0x00000010   Code   RO          904    .ARM.__at_0x400     startup_mkl25z4.o
+    0x00000410   0x00000410   0x000001cc   Code   RO            4    i.Init_ADC          adc_functions.o
+    0x000005dc   0x000005dc   0x000000e4   Code   RO          585    i.PORTA_IRQHandler  switches.o
+    0x000006c0   0x000006c0   0x00000016   Code   RO          661    i.Print_Newline     uart_functions.o
+    0x000006d6   0x000006d6   0x00000002   PAD
+    0x000006d8   0x000006d8   0x00000044   Code   RO          662    i.Print_String      uart_functions.o
+    0x0000071c   0x0000071c   0x00000020   Code   RO          854    i.Q_Init            queue_functions.o
+    0x0000073c   0x0000073c   0x00000074   Code   RO          544    i.SPIsendRec        spi_functions.o
+    0x000007b0   0x000007b0   0x00000138   Code   RO          914    i.SystemInit        system_mkl25z4.o
+    0x000008e8   0x000008e8   0x0000000e   Code   RO          635    i.TPM0_IRQHandler   tpm_functions.o
+    0x000008f6   0x000008f6   0x0000000e   Code   RO          802    i.Test_ADC          test_functions.o
+    0x00000904   0x00000904   0x0000005e   Code   RO          803    i.Test_Mag          test_functions.o
+    0x00000962   0x00000962   0x00000032   Code   RO          804    i.Test_Motors       test_functions.o
+    0x00000994   0x00000994   0x00000028   Code   RO          805    i.Test_UART         test_functions.o
+    0x000009bc   0x000009bc   0x00000010   Code   RO          806    i.Test_USound       test_functions.o
+    0x000009cc   0x000009cc   0x0000001c   Code   RO          664    i.UART2_IRQHandler  uart_functions.o
+    0x000009e8   0x000009e8   0x0000000c   Code   RO          665    i.UART2_Transmit    uart_functions.o
+    0x000009f4   0x000009f4   0x0000001c   Code   RO           41    i.__ARM_common_switch8  adc_functions.o
+    0x00000a10   0x00000a10   0x00000018   Code   RO            5    i.__NVIC_ClearPendingIRQ  adc_functions.o
+    0x00000a28   0x00000a28   0x00000018   Code   RO          489    i.__NVIC_ClearPendingIRQ  pit_functions.o
+    0x00000a40   0x00000a40   0x00000018   Code   RO          586    i.__NVIC_ClearPendingIRQ  switches.o
+    0x00000a58   0x00000a58   0x00000078   Code   RO            6    i.__NVIC_SetPriority  adc_functions.o
+    0x00000ad0   0x00000ad0   0x00000078   Code   RO          490    i.__NVIC_SetPriority  pit_functions.o
+    0x00000b48   0x00000b48   0x00000078   Code   RO          587    i.__NVIC_SetPriority  switches.o
+    0x00000bc0   0x00000bc0   0x0000004c   Code   RO          186    i.control_RGB_LEDs  leds.o
+    0x00000c0c   0x00000c0c   0x000000d8   Code   RO          187    i.control_White_LEDs  leds.o
+    0x00000ce4   0x00000ce4   0x0000001a   Code   RO          145    i.delayMs           lcd_lib_4bit_20b.o
+    0x00000cfe   0x00000cfe   0x0000001e   Code   RO          237    i.get_XData         mag_functions.o
+    0x00000d1c   0x00000d1c   0x0000000c   Code   RO          392    i.go_Backward       motor_functions.o
+    0x00000d28   0x00000d28   0x0000000c   Code   RO          393    i.go_Forward        motor_functions.o
+    0x00000d34   0x00000d34   0x000001b0   Code   RO          188    i.init_LEDs         leds.o
+    0x00000ee4   0x00000ee4   0x000000e0   Code   RO          240    i.init_Mag          mag_functions.o
+    0x00000fc4   0x00000fc4   0x000000b0   Code   RO          546    i.init_SPI1         spi_functions.o
+    0x00001074   0x00001074   0x0000015c   Code   RO          636    i.init_TPM          tpm_functions.o
+    0x000011d0   0x000011d0   0x00000070   Code   RO          666    i.init_UART2        uart_functions.o
+    0x00001240   0x00001240   0x000000d0   Code   RO          588    i.init_switch       switches.o
+    0x00001310   0x00001310   0x00000044   Code   RO          732    i.init_ultrasound   usound_functions.o
+    0x00001354   0x00001354   0x0000001c   Code   RO          394    i.left_wheel_backward  motor_functions.o
+    0x00001370   0x00001370   0x0000001c   Code   RO          395    i.left_wheel_forward  motor_functions.o
+    0x0000138c   0x0000138c   0x0000001c   Code   RO          396    i.left_wheel_stop   motor_functions.o
+    0x000013a8   0x000013a8   0x00000040   Code   RO          766    i.main              main.o
+    0x000013e8   0x000013e8   0x0000008c   Code   RO          733    i.measure_distance  usound_functions.o
+    0x00001474   0x00001474   0x00000060   Code   RO          667    i.print_base10      uart_functions.o
+    0x000014d4   0x000014d4   0x0000001c   Code   RO          397    i.right_wheel_backward  motor_functions.o
+    0x000014f0   0x000014f0   0x0000001c   Code   RO          398    i.right_wheel_forward  motor_functions.o
+    0x0000150c   0x0000150c   0x0000001c   Code   RO          399    i.right_wheel_stop  motor_functions.o
+    0x00001528   0x00001528   0x000000c8   Code   RO            7    i.scan_ADC          adc_functions.o
+    0x000015f0   0x000015f0   0x0000000c   Code   RO          400    i.stop              motor_functions.o
+    0x000015fc   0x000015fc   0x0000002c   Code   RO          189    i.toggle_RGB_LEDs   leds.o
+    0x00001628   0x00001628   0x0000000c   Code   RO          401    i.turn_Left         motor_functions.o
+    0x00001634   0x00001634   0x0000000c   Code   RO          402    i.turn_Right        motor_functions.o
+    0x00001640   0x00001640   0x00000010   Data   RO         1145    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00001614, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00001650, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x00001614, Size: 0x00000270, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x00001650, Size: 0x00000270, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff000        -       0x0000010c   Zero   RW          676    .bss                uart_functions.o
-    0x1ffff10c        -       0x00000060   Zero   RW         1043    .bss                c_p.l(libspace.o)
-    0x1ffff16c   0x00001614   0x00000004   PAD
-    0x1ffff170        -       0x00000000   Zero   RW          929    HEAP                startup_mkl25z4.o
-    0x1ffff170        -       0x00000100   Zero   RW          928    STACK               startup_mkl25z4.o
+    0x1ffff000        -       0x0000010c   Zero   RW          668    .bss                uart_functions.o
+    0x1ffff10c        -       0x00000060   Zero   RW         1016    .bss                c_p.l(libspace.o)
+    0x1ffff16c   0x00001650   0x00000004   PAD
+    0x1ffff170        -       0x00000000   Zero   RW          902    HEAP                startup_mkl25z4.o
+    0x1ffff170        -       0x00000100   Zero   RW          901    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -955,28 +958,27 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       820         74          0          0          0     227498   adc_functions.o
+       832         74          0          0          0     227554   adc_functions.o
         26          0          0          0          0        562   lcd_lib_4bit_20b.o
-       768         40          0          0          0     214102   leds.o
-       224         18          0          0          0     212083   mag_functions.o
-        44          4          0          0          0        511   main.o
-         0          0          0          0          0       1192   main_functions.o
+       768         40          0          0          0     215294   leds.o
+       254         12          0          0          0     212659   mag_functions.o
+        64          8          0          0          0        519   main.o
        228         44          0          0          0       5712   motor_functions.o
        316         36          0          0          0       2396   pit_functions.o
         32          0          0          0          0       1145   queue_functions.o
-       316         20          0          0          0       1679   spi_functions.o
+       292         20          0          0          0       1225   spi_functions.o
         80         44        192          0        256       1068   startup_mkl25z4.o
-       644         46          0          0          0      10433   switches.o
+       580         48          0          0          0      10393   switches.o
        312         46          0          0          0        673   system_mkl25z4.o
-       226         20          0          0          0       2834   test_functions.o
+       214         16          0          0          0       2782   test_functions.o
        362         34          0          0          0       1089   tpm_functions.o
-       332         42          0          0        268      12624   uart_functions.o
-       112         10          0          0          0        687   usound_functions.o
+       338         42          0          0        268      12644   uart_functions.o
+       208         22          0          0          0       1213   usound_functions.o
 
     ----------------------------------------------------------------------
-      4852        482        208          0        524     696288   Object Totals
+      4912        490        208          0        524     696928   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-        10          4          0          0          0          0   (incl. Padding)
+         6          4          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1023,15 +1025,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5444        498        208          0        624     694604   Grand Totals
-      5444        498        208          0        624     694604   ELF Image Totals
-      5444        498        208          0          0          0   ROM Totals
+      5504        506        208          0        624     695200   Grand Totals
+      5504        506        208          0        624     695200   ELF Image Totals
+      5504        506        208          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5652 (   5.52kB)
+    Total RO  Size (Code + RO Data)                 5712 (   5.58kB)
     Total RW  Size (RW Data + ZI Data)               624 (   0.61kB)
-    Total ROM Size (Code + RO Data + RW Data)       5652 (   5.52kB)
+    Total ROM Size (Code + RO Data + RW Data)       5712 (   5.58kB)
 
 ==============================================================================
 

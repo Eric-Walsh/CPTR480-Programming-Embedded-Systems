@@ -1,6 +1,7 @@
 #include "MKL25z4.h"
  #include "gpio_defs.h"
 #include "LEDs.h"
+#include "LCD_Functions.h"
 #include "UART_Functions.h"
 
 void init_SPI1(void){
@@ -25,7 +26,7 @@ void init_SPI1(void){
 	PORTD->PCR[7] |= PORT_PCR_MUX(2);
 	
 	//select master mode, enable SS output
-	SPI1->C1|= SPI_C1_MSTR_MASK | SPI_C1_SSOE_MASK | SPI_C1_CPOL_MASK;
+	SPI1->C1|= SPI_C1_MSTR_MASK | SPI_C1_SSOE_MASK /*| SPI_C1_CPOL_MASK*/;
 	//bidirectional communication on MOSI pin
 	SPI1->C2 = SPI_C2_MODFEN_MASK | SPI_C2_BIDIROE_MASK | SPI_C2_SPC0_MASK;
 	
@@ -41,39 +42,49 @@ void init_SPI1(void){
 	
 }
 
-uint32_t SPIsendRec(uint32_t data){
+uint32_t SPIsendRec(uint32_t addr, uint32_t data){
 	uint32_t dummy;
 	
 	//send
+	PTD->PCOR |= MASK(4);
 	SPI1 -> C2 |= SPI_C2_BIDIROE_MASK;
 	while(!(SPI1->S & SPI_S_SPTEF_MASK)); //wait for transmit buffer to empty
-	SPI1->D = data;
-	//delayMs(3);
-	while(!(SPI1->S & SPI_S_SPRF_MASK)); //wait for recieve buffer to empty
+	SPI1->D = addr;
+	//control_White_LEDs(data);
+	delayMs(3);
+	while(!(SPI1->S & SPI_S_SPTEF_MASK)); //wait for recieve buffer to empty
 	dummy =  SPI1->D;
 	
 	//recieve
-	SPI1 -> C2 &= ~SPI_C2_BIDIROE_MASK;
-	while(!(SPI1->S & SPI_S_SPTEF_MASK)); //wait for transmit buffer to empty
-	SPI1->D = 0xFF;
+	//SPI1 -> C2 &= ~SPI_C2_BIDIROE_MASK;
+	//while(!(SPI1->S & SPI_S_SPTEF_MASK)); //wait for transmit buffer to empty
+	SPI1->D = data;
+	//SPI1 -> C2 &= ~SPI_C2_BIDIROE_MASK;
 	//delayMs(3);
 	while(!(SPI1->S & SPI_S_SPRF_MASK)); //wait for recieve buffer to empty
+	PTD->PSOR |= MASK(4);
 	return  SPI1->D;
+	
 }
 
 void SPIsend(uint32_t data){
+	uint32_t dummy;
+	PTD->PCOR |= MASK(4);
 	SPI1 -> C2 |= SPI_C2_BIDIROE_MASK;
 	while(!(SPI1->S & SPI_S_SPTEF_MASK)); //wait for transmit buffer to empty
 	SPI1->D = data;
-	//delayMs(3);
-	//while(!(SPI1->S & SPI_S_SPTEF_MASK));
+	control_White_LEDs(data);
+	delayMs(3);
+	while(!(SPI1->S & SPI_S_SPTEF_MASK));
+	dummy = SPI1->D;
+	PTD->PSOR |= MASK(4);
 }
 
 void Test_SPI_Loopback(void){
 	uint8_t out = 'A', in;
 	
 	while (1) {
-		in = SPIsendRec(out);
+		in = SPIsendRec(out, out);
 		if(in != out){
 			control_RGB_LEDs(1,0,0);
 		} else {

@@ -23,7 +23,9 @@ int main(){
 	init_switch();
 	Init_PIT(10500);
 	__enable_irq();
-	//init_ultrasound();
+	init_ultrasound();
 	//LCD_init();
+	TPM0->SC |= TPM_SC_CMOD(1);
+	//TPM1->SC |= TPM_SC_CMOD(1);
 	while(1){}
 }

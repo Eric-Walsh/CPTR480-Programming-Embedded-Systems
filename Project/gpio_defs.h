@@ -39,7 +39,7 @@ typedef struct {
 	unsigned int Size;
 } volatile Q_T;
 
-enum state_type{Init, CalcPath, ObCheck, Follow, Avoid, ReCalc, Finish};
+enum state_type{Init = 0xFF, CalcPath = 0x01, ObCheck = 0x10, Follow = 0x15, Avoid = 0x25, ReCalc = 0x35, Finish = 0x66};
 
 #endif
 // *******************************ARM University Program Copyright � ARM Ltd 2013*************************************   

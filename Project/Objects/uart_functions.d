@@ -14,3 +14,5 @@
 .\objects\uart_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
 .\objects\uart_functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\uart_functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\uart_functions.o: LEDs.h
+.\objects\uart_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.H

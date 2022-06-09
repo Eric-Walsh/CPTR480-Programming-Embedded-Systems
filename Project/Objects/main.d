@@ -26,6 +26,8 @@
 .\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
 .\objects\main.o: ADC_Functions.h
 .\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
+.\objects\main.o: PIT_Functions.h
+.\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
 .\objects\main.o: USound_Functions.h
 .\objects\main.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.H
 .\objects\main.o: switches.h

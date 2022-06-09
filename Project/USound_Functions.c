@@ -30,7 +30,7 @@ uint32_t measure_distance(){
 	uint32_t rawDist = 1;
 	uint32_t mmDist = 0;
 	
-	//Turn on port D bit 7
+	//Turn on port A bit 17
 	PTA->PSOR = MASK(17);
 	
 	//clear count register
@@ -48,13 +48,13 @@ uint32_t measure_distance(){
 	//delayMicros(5);
 	
 	//clear ptd7
-	PTD->PCOR = MASK(7);
+	PTA->PCOR = MASK(17);
 	
 	//delayMicros(20);
 	
 	//poll chf flag of tpm0
- 	//while(!(TPM0->CONTROLS[0].CnSC & TPM_CnSC_CHF_MASK));
-	//while(!(TPM0->CONTROLS[1].CnSC & TPM_CnSC_CHF_MASK));
+ 	while(!(TPM1->CONTROLS[0].CnSC & TPM_CnSC_CHF_MASK));
+	while(!(TPM1->CONTROLS[1].CnSC & TPM_CnSC_CHF_MASK));
 	
 	//turn off counter
 	TPM1->SC |= TPM_SC_CMOD(0);
@@ -64,6 +64,5 @@ uint32_t measure_distance(){
 	
 	//convert to milimeters
 	mmDist = rawDist/9;
-	
 	return mmDist;
 }

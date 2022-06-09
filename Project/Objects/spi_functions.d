@@ -10,5 +10,9 @@
 .\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h
 .\objects\spi_functions.o: LEDs.h
 .\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.H
+.\objects\spi_functions.o: LCD_Functions.h
+.\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
+.\objects\spi_functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\spi_functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\spi_functions.o: UART_Functions.h
 .\objects\spi_functions.o: C:\Users\Public\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25z4.h

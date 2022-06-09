@@ -1,15 +1,24 @@
 #include <stdio.h>
 #include <math.h>
 #include <MKL25Z4.H>
+#include "ADC_Functions.h"
 
 #include "LCD_Functions.h"
 #include "gpio_defs.h"
 #include "LEDs.h"
+#include "USound_Functions.h"
+#include "Mag_Functions.h"
 
 	uint32_t minutes = 0;
 	uint32_t seconds = 0;
 	uint32_t tenthsec = 0;;
 	uint32_t clock[] = {0,0,0,0,0,0,0,0,0};
+	
+	const int FINAL_X = 4;
+	const int FINAL_Y = 2;
+	uint32_t orientation = 0;
+	uint32_t actual_x = 0;
+	uint32_t actual_y = 0;
 	
 	//enum state_type{stateA,stateB,stateC,stateD,stateE,stateF,stateG,stateH,stateI};
 	enum state_type present_state,next_state;
@@ -213,7 +222,104 @@ void state_Update(int flag){
 	}
 	
 	present_state = next_state;
+	control_White_LEDs(present_state);
 	return;
 }
 
+uint32_t intersectCheck(){
+	uint32_t grid[9];
+	scan_ADC(grid);
+	int gridCheck = 0;
+	for(int i = 0; i < 9; i++){
+		if(i == (1 || 3 || 8 || 4 || 6)){
+			if(grid[i] > 400){
+				gridCheck++;
+			}
+		}	
+	}
+	if(gridCheck == 5){
+		control_RGB_LEDs(0,1,0);
+		return 1;
+	} else {
+		return 0;
+	}
+}
+// check if the vehicle is alligned
+int alligned(){}
 
+uint32_t pathCalc( uint32_t turn){
+	orientation += turn;
+	switch (orientation){
+		case 0:
+			actual_y += 1;
+			break;
+		case 1:
+			actual_x += 1;
+			break;
+		case 2:
+			actual_y -= 1;
+		break;
+		case 3:
+			actual_x -= 1;
+		break;
+		case 4:
+			orientation = 0;
+			actual_y += 1;
+		case -1:
+			actual_x -= 1;
+			break;
+		case -2:
+			actual_y += 1;
+		break;
+		case -3:
+			actual_x += 1;
+		break;
+		case -4:
+			orientation = 0;
+			actual_y -= 1;
+	}
+	
+	
+	if(actual_y == FINAL_Y && actual_x == FINAL_X){
+		return 3;
+	} else if (actual_y == FINAL_Y && actual_x != FINAL_X){
+		return 2;
+	} else if (actual_y != FINAL_Y && actual_x == FINAL_X){
+		return 1;
+	} else if (actual_y != FINAL_Y && actual_x != FINAL_X){
+		return 0;
+	}
+}
+
+int collide_detect(){
+	uint32_t collide = 0;
+	
+	collide = get_XData();
+	if(collide > 4000){
+		return 1;
+	}
+	
+	collide = get_YData();
+	if(collide > 4000){
+		return 1;
+	}
+	
+	collide = get_ZData();
+	if(collide > 4000){
+		return 1;
+	}
+	
+	collide = measure_distance();
+	if(collide < 50){
+		return 1;
+	}
+	
+	return 0;
+}
+//tells which way to turn when a collision is imminant
+void Avoidance(){
+	if(actual_x > FINAL_X){
+		pathCalc(-1);
+		
+	}
+}
